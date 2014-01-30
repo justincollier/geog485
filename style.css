@@ -1,15 +1,15 @@
 /* style.css - a simple style sheet */
 body {
   margin-left: 10%; margin-right: 10%;
-  color: black; background: white;
+  color: gray; background: white;
   font-family: Verdana, sans-serif;
 }
 
 h1 { margin-left: -8%;}
 
-h2 { margin-top: 8em; margin-bottom: 3em; }
+h2 { margin-top: 2em; margin-bottom: 1em; margin-left: -4%; }
 
-h2,h3,h4,h5,h6 { margin-left: -4%; }
+h3,h4,h5,h6 { margin-left: -4%; }
 
 div.color {
     background: rgb(204,204,255);
