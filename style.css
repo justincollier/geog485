@@ -14,7 +14,7 @@
 body {
   margin-left: 10%; margin-right: 10%;
   color: gray; background: white;
-  font-family: futurabi, monospace;
+  font-family: futura_md_btbold_italic, courier new, monospace;
 }
 
 h1 { margin-left: -8%;}
