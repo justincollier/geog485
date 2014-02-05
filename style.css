@@ -1,5 +1,11 @@
 /* style.css - a simple style sheet */
-@font-face {
+
+
+}
+
+body {
+    
+    @font-face {
     font-family: 'futura_md_btbold_italic';
     src: url('futurabi.eot');
     src: url('futurabi.eot?#iefix') format('embedded-opentype'),
@@ -8,10 +14,7 @@
          url('futurabi.svg#futura_md_btbold_italic') format('svg');
     font-weight: normal;
     font-style: normal;
-
-}
-
-body {
+    
   margin-left: 10%; margin-right: 10%;
   color: gray; background: white;
   font-family: futura_md_btbold_italic, courier new, monospace;
