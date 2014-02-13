@@ -29,12 +29,50 @@
 		
 		<script type="text/javascript">
 			function initialize() {
+			
+				var styles = [
+					{
+						featureType: "poi.park",
+						elementType: "geometry.fill",
+						stylers: [
+							{ visibility: "on" },
+							{ lightness: -42 },
+							{ saturation: 62 }
+						]
+					},{
+						featureType: "water",
+						stylers: [
+							{ visibility: "on" },
+							{ saturation: 22 },
+							{ lightness: -6 }
+						]
+					},{
+						featureType: "administrative",
+						stylers: [
+							{ visibility: "off" }
+						]
+					},{
+						featureType: "poi.business",
+						stylers: [
+							{ visibility: "off" }
+						]
+					},{
+						featureType: "road",
+						stylers: [
+							{ visibility: "simplified" }
+						]
+					}
+				];
+
 				var mapOptions = {
 					center: new google.maps.LatLng(33.23, -107.19),
-					zoom: 12
+					zoom: 12,
+					styles: styles	
 				};
+				
 				var map = new google.maps.Map(document.getElementById("map-canvas"),
 					mapOptions);
+					
 			}
 			google.maps.event.addDomListener(window, 'load', initialize);
 		</script>
