@@ -1,80 +1,134 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Deep Dive 1</title>
+<style type="text/css">
+html, body, mapCanvas {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-	
-	<head>
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		<title>Deep Dive 1</title>
-		
-		<style type="text/css">
-		html { height: 100%; }
-		body { height: 100%; }
-		
-		#map-canvas { height: 100%; margin: -1%; }
-		</style>
-	
-		<script type="text/javascript"
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQhgWypFU1gp5y5UZoKlVQcgUxvUQP2A
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQhgWypFU1gp5y5UZoKlVQcgUxvUQP2A
 			&sensor=false">
-		</script>
-		
-		<script type="text/javascript">
-			function initialize() {
-			
-				var styles = [
-					{
-						featureType: "poi.park",
-						elementType: "geometry.fill",
-						stylers: [
-							{ visibility: "on" },
-							{ lightness: -42 },
-							{ saturation: 62 }
-						]
-					},{
-						featureType: "water",
-						stylers: [
-							{ visibility: "on" },
-							{ saturation: 22 },
-							{ lightness: -6 }
-						]
-					},{
-						featureType: "administrative",
-						stylers: [
-							{ visibility: "off" }
-						]
-					},{
-						featureType: "poi.business",
-						stylers: [
-							{ visibility: "off" }
-						]
-					},{
-						featureType: "road",
-						stylers: [
-							{ visibility: "simplified" }
-						]
-					}
-				];
+</script>
 
-				var mapOptions = {
+<script type="text/javascript">
+  function initialize() {
+  
+  var styles = [
+	{
+		featureType: "poi.park",
+		elementType: "geometry.fill",
+		stylers: [
+			{ visibility: "on" },
+			{ lightness: -42 },
+			{ saturation: 62 }
+		]
+	},{
+		featureType: "water",
+		stylers: [
+			{ visibility: "on" },
+			{ saturation: 22 },
+			{ lightness: -6 }
+		]
+	},{
+		featureType: "administrative",
+		stylers: [
+			{ visibility: "on" }
+		]
+	},{
+		featureType: "poi.business",
+		stylers: [
+			{ visibility: "off" }
+		]
+	},{
+		featureType: "road",
+		stylers: [
+			{ visibility: "simplified" }
+		]
+	}
+  ];
+				
+				
+    google.maps.visualRefresh = true;
+    var isMobile = (navigator.userAgent.toLowerCase().indexOf('android') > -1) ||
+      (navigator.userAgent.match(/(iPod|iPhone|iPad|BlackBerry|Windows Phone|iemobile)/));
+    if (isMobile) {
+      var viewport = document.querySelector("meta[name=viewport]");
+      viewport.setAttribute('content', 'initial-scale=1.0, user-scalable=no');
+    }
+	var mapDiv = document.getElementById('mapCanvas');
+    mapDiv.style.width = isMobile ? '100%' : '100%';
+    mapDiv.style.height = isMobile ? '100%' : '100%';
+    
+    
+    var map = new google.maps.Map(mapDiv, {
+      center: new google.maps.LatLng(33.23, -107.19),
+      zoom: 11,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    
+    
+    var mapOptions = {
 					center: new google.maps.LatLng(33.23, -107.19),
-					zoom: 12,
+					zoom: 11,
 					styles: styles	
 				};
 				
-				var map = new google.maps.Map(document.getElementById("map-canvas"),
+				var map = new google.maps.Map(document.getElementById("mapCanvas"),
 					mapOptions);
-					
-			}
-			google.maps.event.addDomListener(window, 'load', initialize);
-		</script>
-	</head>
-	
-	
-	<body>
+    
+    
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend-open'));
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend'));
+
+    layer = new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col2",
+        from: "1ttWNTMXufNjdQ02o6ioZtF5qnmD6isJIluBT9z0j",
+        where: ""
+      },
+      options: {
+        styleId: 2,
+        templateId: 2
+      }
+    });
+
+    if (isMobile) {
+      var legend = document.getElementById('googft-legend');
+      var legendOpenButton = document.getElementById('googft-legend-open');
+      var legendCloseButton = document.getElementById('googft-legend-close');
+      legend.style.display = 'none';
+      legendOpenButton.style.display = 'block';
+      legendCloseButton.style.display = 'block';
+      legendOpenButton.onclick = function() {
+        legend.style.display = 'block';
+        legendOpenButton.style.display = 'none';
+      }
+      legendCloseButton.onclick = function() {
+        legend.style.display = 'none';
+        legendOpenButton.style.display = 'block';
+      }
+    }
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+	<p>
+		<li>The type of information that you want to depict in your map</li>
+		<li>Your reasons for selecting the specific area shown in the map</li>
+		<li>A description of what you are trying to communicate with the map</li>
+	</p>
 		
-		<div id="map-canvas"/>
-	
-	</body>
-	
-	
+  <div id="mapCanvas"></div>
+</body>
 </html>
