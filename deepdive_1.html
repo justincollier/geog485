@@ -4,12 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>Deep Dive 1</title>
 <style type="text/css">
-html, body, mapCanvas {
+html, mapCanvas {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
 }
+body { height: 100%; margin: 0; padding: 0;
+	margin-left: 5%; margin-right: 5%;
+	color: gray; background: white;
+	font-family: courier, monospace;
+}
+h1 { color: red; margin-left: -3%;}
+li { color: black; margin-left: -1%; }
+
+
 </style>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQhgWypFU1gp5y5UZoKlVQcgUxvUQP2A
@@ -123,12 +132,27 @@ html, body, mapCanvas {
 </head>
 
 <body>
+	<h1>Deep Dive 1</h1>
 	<p>
-		<li>The type of information that you want to depict in your map</li>
-		<li>Your reasons for selecting the specific area shown in the map</li>
-		<li>A description of what you are trying to communicate with the map</li>
+		Justin Collier<br>
+		02/20/14
 	</p>
-		
+	
+	<p>
+		<li>The type of information that you want to depict in your map:</li>
+		In this map I am trying to show how much the water level of Elephant Butte
+		Reservoir has changed.
+		<li>Your reasons for selecting the specific area shown in the map:</li>
+		I chose this area because it centers on the reservoir and it allows then entire
+		reservoir to be in view.
+		<li>A description of what you are trying to communicate with the map:</li>
+		Again, I am trying to show how much the water level has changed, by changed I
+		mean decreased. The change is apparent by the current reservoir border versus
+		the current state park border. At one point these borders were the same, but now
+		there is a large gap between the two.
+	</p>
+	<p><a href="index.html">Go Back Home</a></p>
+	
   <div id="mapCanvas"></div>
 </body>
 </html>

@@ -1,16 +1,16 @@
 /* style.css - a simple style sheet */
 
 body {
-  margin-left: 10%; margin-right: 10%;
+  margin-left: 5%; margin-right: 5%;
   color: gray; background: white;
   font-family: courier, monospace;
 }
 
-h1 { color: red; margin-left: -8%;}
+h1 { color: red; margin-left: -3%;}
 
 /*h2 { margin-top: 2em; margin-bottom: 1em; margin-left: -4%; }*/
 
-h2,h3 { margin-left: -4%; }
+h2,h3 { margin-left: -2%; }
 h4,h5,h6 { color: black; margin-left: -1%; }
 
 div.color {
