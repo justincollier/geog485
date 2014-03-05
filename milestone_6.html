@@ -62,16 +62,33 @@
 	<p>minx="-178.854" miny="-76.4039" maxx="180" maxy="90"</p>
 	
 	<h2>Question 6</h2>
+	<p>Open the following GetCapabilities request in your browser. Select “View Source”
+	from the browser menu to see the delivered XML document (it may appear as an unformatted
+	string of text by default in your browser - if that is the case, save the file to your
+	hard drive and view it in a text editor). Use the information in the XML capabilities
+	document to formulate GetMap requests for the following map images. Include the requests
+	and resulting images in your write-up. Comment on anything unusual that you notice in
+	the images that are returned.</p>
+	
 	<li>for the area surrounding Bernalillo County (-107.2,34.7,-106,35.25) as a 200x200 pixel JPEG</li>
 	<li>for the same area as a 500x500 pixel PNG</li>
 	<p>http://gstore.unm.edu/apps/rgis/datasets/92403ebf-aec5-404b-ae8a-6db41f388737/services/ogc/wms?request=GetMap&srs=EPSG:4326&format=image/jpeg&width=200&height=200&bbox=-107.2,34.7,-106,35.25&layers=2007fe_35_county</p>
 		<p><a href="wms200.jpeg">200 x 200</a></p>
 	<p>http://gstore.unm.edu/apps/rgis/datasets/92403ebf-aec5-404b-ae8a-6db41f388737/services/ogc/wms?request=GetMap&srs=EPSG:4326&format=image/png&width=500&height=500&bbox=-107.2,34.7,-106,35.25&layers=2007fe_35_county</p>
 		<p><a href="wms500.png">500 x 500</a></p>
+	<p>Both of these images are compressed horizontally (or stretched vertically, depending
+	on your view of the world), making Bernalillo County look like a fatty.</p>
 
 	<h2>Question 7</h2>
-	<p></p>
-	<p></p>
+	<p>Open the following (linked) KML file in Google Earth, uncompress it, and save the
+	contained KML file on your computer. Open the KML file in a text editor
+	(e.g. Text Wrangler [Mac], Notepad/Notepad++ [Windows]).</p>
+	<p>Add a second Placemark element to the KML file that represents a square region
+	that is completely contained within the state boundary. Save the KML file and open
+	it in Google Earth (download from http://www.google.com/earth/index.html) or view it
+	in Google Maps (by adding it to your GitHub gh-pages branch) as demonstrated in the
+	lecture to verify that you have successfully created the file. Submit the KML file
+	(as a link in your writeup) as part of your writeup for the milestone.</p>
 	
 	<p><a href="index.html">Go Back Home</a></p>
 	</body>
