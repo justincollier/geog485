@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Milestone 6</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+	</head>
+	<body>
+	<h1><font color="red">Milestone 6</font></h1>
+	
+	<p>
+	Justin Collier<br>
+	03/05/14
+	</p>
+	
+	<h2>Question 1</h2>
+	<p>What search engine did you use?</p>
+	<p>Bing</p>
+	
+	<h2>Question 2</h2>
+	<p>How many ‘hits’ did you get?</p>
+	<p>192,000,000</p>
+	
+	<h2>Question 3</h2>
+	<p>How useful (generally in terms of getting a pointers to live WMS services
+	[defined as a functioning GetCapabilities request]) were the ‘hits’?</p>
+	<p>Many of the top hits were pages explaining what the services are, such as wikipedia
+	pages. It only took a second to find actual live WMS services though.</p>
+	
+	<h2>Question 4</h2>
+	<h3>Service #1</h3>
+	<li>What is the URL for the full GetCapabilities request to the service?</li>
+	<p>http://nsidc.org/cgi-bin/atlas_north?service=WMS&request=GetCapabilities&version=1.1.1</p>
+	<li>What is the Name of the service?</li>
+	<p>OGC:WMS</p>
+	<li>What Format(s) are available for GetMap requests from the service?</li>
+	<p>tiff, gif, png; mode=24bit, jpeg, vnd.wap.wbmp, & svg+xml</p>
+	<li>How many layers are included in the service (including nesting layers)?</li>
+	<p>95</p>
+	
+	<h3>Service #2</h3>
+	<li>What is the URL for the full GetCapabilities request to the service?</li>
+	<p>http://wms.jpl.nasa.gov/wms.cgi?Service=WMS&amp;Version=1.1.1&amp;Request=GetCapabilities</p>
+	<li>What is the Name of the service?</li>
+	<p>OGC:WMS</p>
+	<li>What Format(s) are available for GetMap requests from the service?</li>
+	<p>jpeg, png, geotiff, tiff, vnd.google-earth.kml+xml</p>
+	<li>How many layers are included in the service (including nesting layers)?</li>
+	<p>17</p>
+	
+	<h2>Question 5</h2>
+	<h3>For one of the layers in the first service:</h3>
+	<li>What is the name of the layer?</li>
+	<p>cryosphere_atlas_north</p>
+	<li>What is the SRS of the layer?</li>
+	<p><a href="http://spatialreference.org/ref/epsg/3408/">EPSG:3408</a></p>
+	<li>What is the name of the projection that matches the SRS EPSG code?</li>
+	<p>NSIDC EASE-Grid North</p>
+	<li>What is the LatLonBoundingBox of the layer?</li>
+	<p>minx="-178.854" miny="-76.4039" maxx="180" maxy="90"</p>
+	
+	<h2>Question 6</h2>
+	<li>for the area surrounding Bernalillo County (-107.2,34.7,-106,35.25) as a 200x200 pixel JPEG</li>
+	<li>for the same area as a 500x500 pixel PNG</li>
+	<p>http://gstore.unm.edu/apps/rgis/datasets/92403ebf-aec5-404b-ae8a-6db41f388737/services/ogc/wms?request=GetMap&srs=EPSG:4326&format=image/jpeg&width=200&height=200&bbox=-107.2,34.7,-106,35.25&layers=2007fe_35_county</p>
+		<p><a href="wms200.jpeg">200 x 200</a></p>
+	<p>http://gstore.unm.edu/apps/rgis/datasets/92403ebf-aec5-404b-ae8a-6db41f388737/services/ogc/wms?request=GetMap&srs=EPSG:4326&format=image/png&width=500&height=500&bbox=-107.2,34.7,-106,35.25&layers=2007fe_35_county</p>
+		<p><a href="wms500.png">500 x 500</a></p>
+
+	<h2>Question 7</h2>
+	<p></p>
+	<p></p>
+	
+	<p><a href="index.html">Go Back Home</a></p>
+	</body>
+</html>
