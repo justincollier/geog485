@@ -15,7 +15,7 @@
 	
 		<p>
 		Justin Collier<br>
-		02/26/14
+		02/27/14
 		</p>
 	
 		<h2>Question 1</h2>
@@ -26,37 +26,111 @@
 				<li>2004 Color (RGB)</li>
 				<li>MRCOG04 (6 in)</li>
 				
-			<h4>...</h4>
+			<h4>Bernalillo County, NM, 2012 6-inch imagery, A4W_NE</h4>
 				<li>Digital Orthophotography</li>
-				<li>2004 Color (RGB)</li>
-				<li>MRCOG04 (6 in)</li>
+				<li>2012 (Color RGB)</li>
+				<li>MRCOG (6 in)</li>
 				
-			<h4>...</h4>
-				<li>Digital Orthophotography</li>
-				<li>2004 Color (RGB)</li>
-				<li>MRCOG04 (6 in)</li>
+			<h4>NM Elephant Butte, US Topo 2013</h4>
+				<li>US Topo GeoTIFF</li>
 		</p>
 
 		<h2>Question 2</h2>
 		<p>Examine each file using either gdalinfo or ogrinfo (depending upon whether it
 		is a raster or vector data product), and answer the following questions about
 		each data set:
+			<li>What is the projection/coordinate system for the data product? If it is
+			undefined, note it.</li>
 		
-		<li>What is the projection/coordinate system for the data product? If it is
-		undefined, note it.</li>
+			<li>What is the spatial extent (i.e. bounding box) of the data product?</li>
 		
-		<li>What is the spatial extent (i.e. bounding box) of the data product?</li>
-		
-		<li>If it is a vector dataset, how many features does it have?If it is a raster
-		dataset, what is the pixel resolution (include units) of the dataset?</li>
+			<li>If it is a vector dataset, how many features does it have?</li>
+			
+			<li>If it is a raster dataset, what is the pixel resolution (include units)
+			of the dataset?</li>
 		</p>
-		<p></p>
+		<p>
+			<h4>Albuquerque East 7.5 Minute Quad, N16</h4>
+				<li>Transverse Mercator & NAD83 NM Central</li>
+				<li>Upper Left (106d37'19.72"W, 35d 2'39.90"N)</li>
+				<li>Lower Left (106d37'19.48"W, 35d 1'46.10"N)</li>
+				<li>Upper Right (106d36'14.63"W, 35d 2'40.10"N)</li>
+				<li>Lower Right (106d36'14.40"W, 35d 1'46.30"N)</li>
+				<li>2 pixels/inch</li>
+				
+			<h4>Bernalillo County, NM, 2012 6-inch imagery, A4W_NE</h4>
+				<li>Transverse Mercator & NAD83 (HARN)/NM Central</li>
+				<li>Upper Left (106d56'55.70"W, 35d13' 8.43"N)</li>
+				<li>Lower Left (106d56'55.45"W, 35d12'39.22"N)</li>
+				<li>Upper Right (106d56'19.91"W, 35d13' 8.63"N)</li>
+				<li>Lower Right (106d56'19.67"W, 35d12'39.43"N)</li>
+				<li>1 (unitless)</li>
+				
+			<h4>NM Elephant Butte, US Topo 2013</h4>
+				<li>Transverse Mercator & NAD83/UTM zone 13N</li>
+				<li>Upper Left (107d15'11.51"W, 33d14'59.79"N)</li>
+				<li>Lower Left (107d14'59.80"W, 33d 7'22.09"N)</li>
+				<li>Upper Right (107d 7'30.21"W, 33d15' 7.92"N)</li>
+				<li>Lower Right (107d 7'19.16"W, 33d 7'30.17"N)</li>
+				<li>N/A</li>	
+		</p>
 	
 		<h2>Question 3</h2>
 		<p>Use proj or cs2cs (I suggest you use cs2cs) to calculate the coordinates of
 		the spatial extent of the datasets that you downloaded in UTM Zone 13N, NAD27.
 		Paste the input and output of the command(s) into your writeup.</p>
-		<p></p>
+		<p>
+			<h4>Albuquerque East 7.5 Minute Quad, N16</h4>
+				<li>Upper Left (-0.00d37'19.72"W, 35d 2'39.90"N)</li>
+				<li>Lower Left (-0.00d37'19.48"W, 35d 1'46.10"N)</li>
+				<li>Upper Right (-0.00d36'14.63"W, 35d 2'40.10"N)</li>
+				<li>Lower Right (-0.00d36'14.40"W, 35d 1'46.30"N)</li>
+				<p> I/O<br>
+					jdeezys-air:~ jdeezy$ cs2cs +init="EPSG:2258" +to +init="EPSG:26713"<br>
+					106d37'19.72"W, 35d 2'39.90"N<br>
+					-119530.51	3435705.77 -0.00d37'19.72"W, 35d 2'39.90"N<br>
+					106d37'19.48"W, 35d 1'46.10"N<br>
+					-119530.51	3435705.77 -0.00d37'19.48"W, 35d 1'46.10"N<br>
+					106d36'14.63"W, 35d 2'40.10"N<br>
+					-119530.51	3435705.77 -0.00d36'14.63"W, 35d 2'40.10"N<br>
+					106d36'14.40"W, 35d 1'46.30"N<br>
+					-119530.51	3435705.77 -0.00d36'14.40"W, 35d 1'46.30"N
+				</p>
+				
+			<h4>Bernalillo County, NM, 2012 6-inch imagery, A4W_NE</h4>
+				<li>Upper Left (-0.00d56'55.70"W, 35d13' 8.43"N)</li>
+				<li>Lower Left (-0.00d56'55.45"W, 35d12'39.22"N)</li>
+				<li>Upper Right (-0.00d56'19.91"W, 35d13' 8.63"N)</li>
+				<li>Lower Right (-0.00d56'19.67"W, 35d12'39.43"N)</li>
+				<p> I/O<br>
+					jdeezys-air:~ jdeezy$ cs2cs +init="EPSG:2903" +to +init="EPSG:26713"<br>
+					106d56'55.70"W, 35d13' 8.43"N<br>
+					-119530.51	3435705.77 -0.00d56'55.70"W, 35d13' 8.43"N<br>
+					106d56'55.45"W, 35d12'39.22"N<br>
+					-119530.51	3435705.77 -0.00d56'55.45"W, 35d12'39.22"N<br>
+					106d56'19.91"W, 35d13' 8.63"N<br>
+					-119530.51	3435705.77 -0.00d56'19.91"W, 35d13' 8.63"N<br>
+					106d56'19.67"W, 35d12'39.43"N<br>
+					-119530.51	3435705.77 -0.00d56'19.67"W, 35d12'39.43"N
+				</p>
+				
+			<h4>NM Elephant Butte, US Topo 2013</h4>
+				<li>Upper Left (0.00d15'11.51"W, 33d14'59.79"N)</li>
+				<li>Lower Left (0.00d14'59.80"W, 33d 7'22.09"N)</li>
+				<li>Upper Right (0.00d 7'30.21"W, 33d15' 7.92"N)</li>
+				<li>Lower Right (0.00d 7'19.16"W, 33d 7'30.17"N)</li>
+				<p> I/O<br>
+					jdeezys-air:~ jdeezy$ cs2cs +init="EPSG:26913" +to +init="EPSG:26713"<br>
+					107d15'11.51"W, 33d14'59.79"N<br>
+					101.52	0.00 0.00d15'11.51"W, 33d14'59.79"N<br>
+					107d14'59.80"W, 33d 7'22.09"N<br>
+					101.52	0.00 0.00d14'59.80"W, 33d 7'22.09"N<br>
+					107d 7'30.21"W, 33d15' 7.92"N<br>
+					101.52	0.00 0.00d 7'30.21"W, 33d15' 7.92"N<br>
+					107d 7'19.16"W, 33d 7'30.17"N<br>
+					101.52	0.00 0.00d 7'19.16"W, 33d 7'30.17"N
+				</p>	
+		</p>
 
 		<p><a href="index.html">Go Back Home</a></p>
 	
