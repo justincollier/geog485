@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Milestone 7</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+	</head>
+	<body>
+	<h1><font color="red">Milestone 7</font></h1>
+	
+	<p>
+	Justin Collier<br>
+	03/05/14
+	</p>
+	
+	<h2>Question 1</h2>
+	<p>What is the aspect ratio of this geographic region?</p>
+	<p>BBOX width = (maxx) - (minx) = (-106.5) - (-109.5) = 3 degrees<br>
+	BBOX height = (maxy) - (miny) = (36.5) - (34.5) = 2 degrees<br>
+	BBOX aspect ratio = (BBOX width) / (BBOX height) = (3) / (2) = 1.5</p>
+	
+	<h2>Question 2</h2>
+	<p>What would be the height (in whole pixels) for a map image for this region that is
+	600 pixels wide?</p>
+	<p>BBOX height = (BBOX width) / (BBOX aspect ratio) = (600px) / (1.5) = 400px</p>
+	
+	<h2>Question 3</h2>
+	<p>Formulate a WMS request that reflects the values determined in 1.1 and 1.2 above
+	for the WMS service used above in the examples. Include in your answer both the actual
+	WMS request and the returned map image.</p>
+	<p>http://gstore.unm.edu/apps/rgis/datasets/97810/services/ogc/wms?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&BBOX=-109.5,34.5,-106.5,36.5&LAYERS=2007fe_35_county00&FORMAT=image/png&TRANSPARENT=TRUE&STYLES=&SRS=EPSG:4326&WIDTH=600&HEIGHT=400</p>
+		<p><a href="wms400.png">600 x 400</a></p>
+	
+	<h2>Question 4</h2>
+	<p>Formulate a WMS request for a 900x600 pixel map image that represents the full
+	3-degree width of the geographic region, and is based upon the minimum Y value of
+	34.5 degrees North Latitude. Include in your answer both the WMS request and the
+	returned map image.</p>
+	<p></p>
+	
+	<h2>Question 5</h2>
+	<p>Given a WMS that is represented by the following GetCapabilities request,
+	formulate individual GetMap requests using the following parameters:<br>
+
+	BBOX=-106.639,35.074,-106.609,35.094 WIDTH=600 HEIGHT=400<br>
+
+	for each of the following layers: 0 (TNM_Large_Scale_Imagery) and 1 (1_foot_imagery)
+	- yes - USGS just gave numbers as the layer names</p>
+	<p></p>
+	
+	<h2>Question 6</h2>
+	<p>Which layers return map images that display image content (i.e. return a non-blank
+	image)?<br>
+	Sometimes when WMS layers are accessed, there is a limit on the map scales for which
+	the map image will be returned. If a request is submitted for a map scale that is
+	outside the range specified for a given layer, typically, a blank map image will be
+	returned.</p>
+	<p></p>
+
+	<h2>Question 7</h2>
+	<p>From examining the information for these layers in the GetCapabilities XML
+	document - which element in each layer’s service metadata do you think provides
+	information about the scales for which the layer will return map images containing
+	data?<br>
+	You can effectively change the scale of a map image by changing the pixel dimensions
+	of the requested image.</p>
+	<p></p>
+	
+	<h2>Question 8</h2>
+	<p>Which map images contain data for each of the following map image widths
+	(remember to adjust the image height to match the BBOX of the request)<br>
+	30 pixels<br>
+	1200 pixels</p>
+	<p></p>
+	
+	<p><a href="index.html">Go Back Home</a></p>
+	</body>
+</html>
