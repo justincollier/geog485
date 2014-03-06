@@ -44,21 +44,17 @@
 	<h2>Question 5</h2>
 	<p>Given a WMS that is represented by the following GetCapabilities request,
 	formulate individual GetMap requests using the following parameters:<br>
-
-	BBOX=-106.639,35.074,-106.609,35.094 WIDTH=600 HEIGHT=400<br>
-
-	for each of the following layers: 0 (TNM_Large_Scale_Imagery) and 1 (1_foot_imagery)
-	- yes - USGS just gave numbers as the layer names</p>
-	<p></p>
+	BBOX=-106.639,35.074,-106.609,35.094 WIDTH=600 HEIGHT=400</p>
+	<p>http://raster.nationalmap.gov/arcgis/services/TNM_Large_Scale_Imagery/MapServer/WMSServer?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&STYLES=&SRS=EPSG:4326&format=image/jpeg&width=600&height=400&bbox=-106.639,35.074,-106.609,35.094&layers=0</p>	
+		<p><a href="images/wmsserver0">Layer 0</a></p>
+		
+	<p>http://raster.nationalmap.gov/arcgis/services/TNM_Large_Scale_Imagery/MapServer/WMSServer?VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&STYLES=&SRS=EPSG:4326&format=image/jpeg&width=600&height=400&bbox=-106.639,35.074,-106.609,35.094&layers=1</p>
+		<p><a href="images/wmsserver1">Layer 1</a></p>
 	
 	<h2>Question 6</h2>
 	<p>Which layers return map images that display image content (i.e. return a non-blank
-	image)?<br>
-	Sometimes when WMS layers are accessed, there is a limit on the map scales for which
-	the map image will be returned. If a request is submitted for a map scale that is
-	outside the range specified for a given layer, typically, a blank map image will be
-	returned.</p>
-	<p></p>
+	image)?</p>
+	<p>Layer 0: TNM_Large_Scale_Imagery</p>
 
 	<h2>Question 7</h2>
 	<p>From examining the information for these layers in the GetCapabilities XML
