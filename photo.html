@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Milestone 3</title>
+		<!-- <link type="text/css" rel="stylesheet" href="style.css"> -->
+		
+		<style type="text/css">
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;
+				margin-left: 10%; margin-right: 10%;
+				color: gray; background: white;
+				font-family: courier, monospace;}
+				
+		h1 { margin-left: -8%;}
+		h2,h3,h4,h5,h6 { margin-left: -4%; }
+		
+		#map-canvas { height: 90%; margin: 2% }
+		
+		</style>
+	
+	
+		<script type="text/javascript"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtQhgWypFU1gp5y5UZoKlVQcgUxvUQP2A
+			&sensor=false">
+		</script>
+		
+		<script type="text/javascript">
+			function initialize() {
+				var mapOptions = {
+					center: new google.maps.LatLng(33.23, -107.19),
+					zoom: 5
+					<!-- mapTypeId: google.maps.MapTypeId.ROADMAP -->
+				}
+				var map = new google.maps.Map(document.getElementById("map-canvas"),
+					mapOptions);
+					
+				var layer = new google.maps.FusionTablesLayer({
+					query: {
+						select: 'Location',
+						from: '1Yt0ihozhcEsOI9HKoejK-Z_-N8GUcd5I8X17ogdr'
+					},
+				});
+				layer.setMap(map);
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	</head>
+	
+	
+	<body>
+		<h1><font color="red">Milestone 3</font></h1>
+	
+		<p>
+		Justin Collier<br>
+		02/05/14
+		</p>
+	
+		<h2>Question 1</h2>
+	
+		<h2>Question 2</h2>
+	
+		<h2>Question 3</h2>
+	
+		<h2>Question 4</h2>
+	
+		<h2>Question 5</h2>
+		<p><a href="index.html">Go Back Home</a></p>
+		
+		<div id="map-canvas"/>
+	
+	</body>
+	
+	
+</html>
