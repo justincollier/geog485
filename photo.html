@@ -30,7 +30,7 @@
 		<script type="text/javascript">
 			function initialize() {
 				var mapOptions = {
-					center: new google.maps.LatLng(33.23, -107.19),
+					center: new google.maps.LatLng(41, -108),
 					zoom: 5
 					<!-- mapTypeId: google.maps.MapTypeId.ROADMAP -->
 				}
@@ -39,8 +39,8 @@
 					
 				var layer = new google.maps.FusionTablesLayer({
 					query: {
-						select: 'Location',
-						from: '1Yt0ihozhcEsOI9HKoejK-Z_-N8GUcd5I8X17ogdr'
+						select: 'location',
+						from: '10TtuMW7QNVFmNQ2JdK_Oi7y7iGG1AQKq2P9tEawi'
 					},
 				});
 				layer.setMap(map);
