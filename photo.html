@@ -38,6 +38,8 @@
 					mapOptions);
 					
 				var layer = new google.maps.FusionTablesLayer({
+					map: map,
+      				heatmap: { enabled: false },
 					query: {
 						select: 'location',
 						from: '10TtuMW7QNVFmNQ2JdK_Oi7y7iGG1AQKq2P9tEawi'
