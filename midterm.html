@@ -16,12 +16,14 @@
 	03/12/14
 	</p>
 	
+	
 	<h2>Question 1</h2>
 	<p>The spatial extent of a GML file (choose one)?</p>
-	<p></p>
+	<p class="answer">ogrinfo</p>
 	
 	<p>The spatial reference system of a raster file in the format of a GeoTIFF (choose one)?</p>
 	<p class="answer">gdalinfo</p>
+	
 	
 	<h2>Question 2</h2>
 	<p>What combination of OGC Service and Request 
@@ -36,60 +38,70 @@
 	<p class="answer"></p>
 	<li>Retrieve a map image from a Web Map Service</li>
 	<p></p>
-	<li>Retrieve data from an available coverage from a Web Coverage Service￿</li>
+	<li>Retrieve data from an available coverage from a Web Coverage Service�</li>
 	<p class="answer"></p>
+	
 	
 	<h2>Question 3</h2>
 	<p>Use the cs2cs command line utility to convert the following latitude-longitude 
 	coordinates (WGS84) to UTM, Zone 13N, NAD83 coordinates (5 pts each)</p>
 	<li>35.682180 North Latitude -105.939670 East Longitude (New Mexico State Capitol)</li>
-	<p class="answer"></p>
+	<p class="answer">jdeezys-air:~ jdeezy$ cs2cs +init="EPSG:4326" +to +init="EPSG:26913" <br>
+	-105.939670 35.682180 <br>
+	414970.04	3949105.23</p>
 	<li>34.891983 North Latitude -107.930153 East Longitude (El Malpais National Monument)</li>
-	<p class="answer"></p>
+	<p class="answer">jdeezys-air:~ jdeezy$ cs2cs +init="EPSG:4326" +to +init="EPSG:26913" <br>
+	-107.930153 24.891983 <br>
+	203977.24	2756175.16</p>
+	
 	
 	<h2>Question 4</h2>
 	<p>Perform the following WMS GetCapabilities request: <br>
 	http://neowms.sci.gsfc.nasa.gov/wms/wms?version=1.1.1&service=WMS&request=GetCapabilities <br>
 	And answer the following questions (4 pts each)</p>
 	<li>What is the name of the service?</li>
-	<p class="answer"></p>
+	<p class="answer">OGC:WMS</p>
 	<li>What file formats are supported by the GetMap request?</li>
-	<p class="answer"></p>
+	<p class="answer">png and jpeg</p>
 	<li>What are the names of three of the layers included in the service?</li>
-	<p class="answer"></p>
+	<p class="answer">MOD14A1_M_FIRE, MODAL2_M_AER_OD, and MCD43C3_M_BSA</p>
+	
 	
 	<h2>Question 5</h2>
 	<p>Compose a GetMap request for the WMS referenced in Question 4 that includes the 
 	following characteristics:</p>
 	<li>JPEG image format</li>
-	<p class="answer"></p>
 	<li>1200 pixels wide (you will need to calculate the height based upon the 
 	aspect ratio of the bounding box)</li>
-	<p class="answer"></p>
-	<li>BoundingBox(EPSG:4326): <br>
-	MinX=-128EastLongitude, <br>
-	MinY=21.5NorthLatitude, <br>
-	Max X = -62 East Longitude, <br>
-	Max Y = 54.5 North Latitude</li>
-	<p class="answer"></p>
+	<li>BoundingBox(EPSG:4326):
+	<li>Min X = -128 East Longitude</li>
+	<li>Min Y = 21.5 North Latitude</li>
+	<li>Max X = -62 East Longitude</li>
+	<li>Max Y = 54.5 North Latitude</li>
 	<li>Layer to be mapped = “MOD_LSTD_CLIM_M”</li>
-	<p class="answer"></p>
+	<p class="answer">
+	http://neowms.sci.gsfc.nasa.gov/wms/wms?version=1.1.1&service=WMS&request=GetMap&BBOX=-128,21.5,-62,54.5&LAYERS=MOD_LSTD_CLIM_M&FORMAT=image/png&TRANSPARENT=TRUE&STYLES=&SRS=EPSG:4326&WIDTH=1200&HEIGHT=600
+	</p>
+		<p><a href="images/wms1200.png">1200 x 600</a></p>
+	
 	
 	<h2>Question 6</h2>
 	<p>From the XML GetCapabilities returned by the following WFS request (Link) 
-	answer the following questions (4 pts each)￿</p>
+	answer the following questions (4 pts each)�</p>
 	<p>http://services.nationalmap.gov/arcgis/services/WFS/transportation/MapServer
 	/WFSServer?request=GetCapabilities&service=WFS</p>
 	<li>What is the title for this service?</li>
-	<p class="answer"></p>
+	<p class="answer">WFS_transportation</p>
 	<li>What file format(s) are supported by this service’s GetFeature request?</li>
-	<p class="answer"></p>
+	<p class="answer">xml & gml subtype</p>
 	<li>What is the DefaultSRS or the FeatureType named 
 	“WFS_transportation:Interstate”?</li>
-	<p class="answer"></p>
+	<p class="answer">EPSG:6.9:4326</p>
 	<li>What is the WGS84BoundingBox of the FeatureType named 
 	“WFS_transportation:Interstate”?</li>
-	<p class="answer"></p>
+	<p class="answer">Lower Corner: -158.10419299999992 21.277850000000058 <br> 
+					  Upper Corner: -67.781173999999908 49.002374000000088 </p>
+	
 	
 	<h2>Question 7</h2>
 	<p>From the XML GetCapabilities returned by the following WCS request 
@@ -97,14 +109,16 @@
 	<p>http://sdf.ndbc.noaa.gov/thredds/wcs/hfradar_uswc_500m?request=GetCapabilities
 	&version=1.0.0&service=WCS</p>
 	<li>What is the description of the v coverage?</li>
-	<p class="answer"></p>
+	<p class="answer">v m s-1 true surface_northward_sea_water_velocity</p>
 	<li>How many coverages are available from this service?</li>
-	<p class="answer"></p>
+	<p class="answer">two</p>
+	
 	
 	<h2>Question 8a</h2>
 	<p>Formulate a complete DescribeCoverage request for the v coverage for 
-	the WCS service ref- erenced in Question 7. (4 pts)</p>
+	the WCS service referenced in Question 7. (4 pts)</p>
 	<p class="answer"></p>
+	
 	
 	<h2>Question 8b</h2>
 	<p>From the returned XML document answer the following questions. (4 pts each)</p>

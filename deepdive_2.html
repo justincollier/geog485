@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Deep Dive 2</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<style>p.answer { color: black; }</style>
+	</head>
+	<body>
+	<h1><font color="red">Deep Dive 2</font></h1>
+	
+	<p>
+	Justin Collier<br>
+	03/05/14
+	</p>
+	
+	
+	<h2>Question 1</h2>
+	<p>What request type is common across all three (WMS, WFS, WCS) 
+	OGC web services that we have learned about?</p>
+	<p class="answer"></p>
+	
+	
+	<h2>Question 2</h2>
+	<p>Answer the following questions about a WMS GetCapabilities request</p>
+	<li>What are the required parameters, and what do they represent?</li>
+	<p class="answer"></p>
+	<li>What is returned in response to a WMS GetCapabilities request?</li>
+	<p class="answer"></p>
+
+	
+	
+	<h2>Question 3</h2>
+	<p>Answer the following questions about a WMS GetMap request</p>
+	<li>What are the required parameters, and what do they represent?</li>
+	<p class="answer"></p>
+	<li>What is returned in response to a WMS GetMap request?</li>
+	<p class="answer"></p>
+	<li>What is the significance of transparency in WMS requests?</li>
+	<p class="answer"></p>
+	
+	
+	<h2>Question 4</h2>
+	<p>What OGC request would you use to inform the configuration of a 
+	client application (like ArcGIS) about an OGC service that you want to add layers from?</p>
+	<p class="answer"></p>
+
+	
+	
+	<h2>Question 5</h2>
+	<p>Which OGC request would you submit under the following circumstances 
+	(include both the service type [e.g. WMS, WFS, WCS], and the request 
+	[e.g. GetMap, GetCapabilities, GetCoverage, etc.] in your answer)</p>
+	<li>You want a map image representing three layers of data in a single 
+	JPEG for a specified area of interest.</li>
+	<p class="answer"></p>
+	<li>You want to retrieve data representing geometries and associated attributes 
+	for a road network, with the returned data in GML.</li>
+	<p class="answer"></p>
+	<li>You want to retrieve data representing a digital elevation model 
+	(a raster dataset) in the form of a GeoTIFF.</li>
+	<p class="answer"></p>
+	
+	
+	<h2>Question 6</h2>
+	<p>What are the EPSG codes of the following Spatial Reference Systems</p>
+	<li>WGS 84 (Geodetic CRS [geographic 2d])</li>
+	<p class="answer">EPSG:4326</p>
+	<li>NAD83 / UTM zone 13N</li>
+	<p class="answer">EPSG:26913</p>
+	<li>NAD27 / UTM zone 13N</li>
+	<p class="answer">EPSG:26713</p>
+	
+	
+	<h2>Question 7</h2>
+	<p>Use the cs2cs utility to convert the following WGS84 Geographic Coordinates 
+	into UTM Zone 13, NAD83 coordinates. Include your cs2cs command and output in your 
+	writeup.</p>
+	<li>35°14′19.29″ N, 107°36′30.67″ W (Mount Taylor Summit)</li>
+	<p class="answer">jdeezys-air:~ jdeezy$ cs2cs +init="EPSG:4326" +to +init="EPSG:26913" <br>
+	107d36'30.67"W 35d14'19.29"N <br>
+	262633.94		3902632.48 0.00</p>
+	<li>34°16′40.34″ N, 103°19′28.49″ W (Blackwater Draw)</li>
+	<p class="answer">jdeezys-air:~ jdeezy$ cs2cs +init="EPSG:4326" +to +init="EPSG:26913" <br>
+	103d19'28.49"W 34d16'40.34"N <br>
+	654223.84		3794236.77 0.00</p>
+	
+	
+	<h2>Question 8</h2>
+	<p>Retrieve the GetCapabilities XML response from the following WMS, and answer 
+	the following questions. <br>
+	http://gstore.unm.edu/apps/rgis/datasets/
+	715663ba-c1c3-414c-84a7-c671526f8316/services/ogc/wms?SERVICE=wms&
+	REQUEST=GetCapabilities&VERSION=1.1.1</p>
+	<li>What is the Title of the service?</li>
+	<p class="answer"></p>
+	<li>Who is the Contact Person for questions about the service?</li>
+	<p class="answer"></p>
+	<li>What are the available image formats for the GetMap request for this service?</li>
+	<p class="answer"></p>
+	<li>What are the SRS/CRS’s for which layers from this service are available 
+	(remember that nested layers inherit the SRS/CRS of their parent layers).</li>
+	<p class="answer"></p>
+	
+	
+	<h2>Question 9</h2>
+	<p>Formulate a GetMap request for the “tl_2010_35_bg10” layer from this service, 
+	for a 500x500 pixel map image that is 0.05-degrees wide and 0.05-degress high, 
+	with the SW corner of the map image located at 35°N and -106°45'E. Include in your 
+	write-up the complete GetMap request and the returned map image. </p>
+	<p></p>
+	
+	<p><a href="index.html">Go Back Home</a></p>
+	</body>
+</html>
