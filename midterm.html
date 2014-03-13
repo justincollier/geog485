@@ -18,6 +18,7 @@
 	
 	
 	<h2>Question 1</h2>
+	<p>Which command line utility would you use to determine the following (4 pts each)</p>
 	<p>The spatial extent of a GML file (choose one)?</p>
 	<p class="answer">ogrinfo</p>
 	
@@ -30,16 +31,17 @@
 	(e.g. SERVICE=WMS&REQUEST=GetFeatureInfo) would you use to perform the following? 
 	(3 pts each)</p>
 	<li>Determine the spatial extent of an available layer from a Web Map Service.</li>
-	<p class="answer"></p>
+	<p class="answer">SERVICE=WMS&REQUEST=GetFeatureInfo</p>
 	<li>Obtain a list of coverages from a Web Coverage service.</li>
-	<p class="answer"></p>
+	<p class="answer">SERVICE=WCS&REQUEST=GetCapabilities</p>
 	<li>Determine what file formats are supported by a Web Feature Service for the 
 	delivery of available data types (i.e. layers)</li>
-	<p class="answer"></p>
+	<p class="answer">SERVICE=WFS&REQUEST=GetCapabilities</p>
 	<li>Retrieve a map image from a Web Map Service</li>
-	<p></p>
-	<li>Retrieve data from an available coverage from a Web Coverage Service�</li>
-	<p class="answer"></p>
+	<p class="answer">http://neowms.sci.gsfc.nasa.gov/wms/wms?version=1.1.1&service=WMS&request=GetMap&BBOX=-128,21.5,-62,54.5&LAYERS=BlueMarbleNG-TB&FORMAT=image/png&TRANSPARENT=TRUE&STYLES=&SRS=EPSG:4326&WIDTH=1200&HEIGHT=600</p>
+		<p><a href="images/wms.png">(Link)</a></p>
+	<li>Retrieve data from an available coverage from a Web Coverage Service</li>
+	<p class="answer">http://sdf.ndbc.noaa.gov/thredds/wcs/hfradar_uswc_500m?version=1.0.0&service=WCS&request=GetCoverage&COVERAGE=v&CRS=urn:ogc:def:crs:OGC:1.3:CRS84&BBOX=-122.59346771240234%2037.45548629760742,-122.0468978881836%2038.13872528076172&FORMAT=image/GeoTIFF&WIDTH=500&HEIGHT=500</p>
 	
 	
 	<h2>Question 3</h2>
@@ -111,23 +113,26 @@
 	<li>What is the description of the v coverage?</li>
 	<p class="answer">v m s-1 true surface_northward_sea_water_velocity</p>
 	<li>How many coverages are available from this service?</li>
-	<p class="answer">two</p>
+	<p class="answer">four</p>
 	
 	
 	<h2>Question 8a</h2>
 	<p>Formulate a complete DescribeCoverage request for the v coverage for 
 	the WCS service referenced in Question 7. (4 pts)</p>
-	<p class="answer"></p>
+	<p class="answer">http://sdf.ndbc.noaa.gov/thredds/wcs/hfradar_uswc_500m?version=1.0.0&service=WCS&request=DescribeCoverage&COVERAGE=v</p>
 	
 	
 	<h2>Question 8b</h2>
 	<p>From the returned XML document answer the following questions. (4 pts each)</p>
 	<li>What is the spatial domain for the ‘v‘ coverage?</li>
-	<p class="answer"></p>
+	<p class="answer">
+	OGC:1.3:CRS84 <br>
+	-122.59346771240234 37.45548629760742 <br>
+	-122.0468978881836 38.13872528076172</p>
 	<li>What file formats are available for ‘v‘ data delivered by this service?</li>
-	<p class="answer"></p>
+	<p class="answer">GeoTIFF, GeoTIFF_Float, and NetCDF3</p>
 	<li>What SRS(s) are supported by this service for requested data delivery?</li>
-	<p class="answer"></p>
+	<p class="answer">OGC:CRS84 & EPSG:0</p>
 	
 	<p><a href="index.html">Go Back Home</a></p>
 	</body>

@@ -20,32 +20,60 @@
 	<h2>Question 1</h2>
 	<p>What request type is common across all three (WMS, WFS, WCS) 
 	OGC web services that we have learned about?</p>
-	<p class="answer"></p>
+	<p class="answer">GetCapabilities</p>
 	
 	
 	<h2>Question 2</h2>
 	<p>Answer the following questions about a WMS GetCapabilities request</p>
 	<li>What are the required parameters, and what do they represent?</li>
-	<p class="answer"></p>
+	<p class="answer">
+	VERSION <br>
+	This is the version of the request <br><br>
+	SERVICE <br>
+	This is the type of service <br><br>
+	REQUEST <br>
+	This is the name of the request <br><br>
+	</p>
 	<li>What is returned in response to a WMS GetCapabilities request?</li>
-	<p class="answer"></p>
+	<p class="answer">An xml file with metadata about what can be requested from the service</p>
 
 	
 	
 	<h2>Question 3</h2>
 	<p>Answer the following questions about a WMS GetMap request</p>
 	<li>What are the required parameters, and what do they represent?</li>
-	<p class="answer"></p>
+	<p class="answer">
+	VERSION <br>
+	This is the version of the request <br><br>
+	REQUEST <br>
+	This is the name of the request <br><br>
+	LAYERS <br>
+	This is the map layer(s) that you want to retrieve, essentially the information 
+	you want your map to display <br><br>
+	STYLES<br>
+	This is the style of the map <br><br>
+	SRS<br>
+	This is the spatial reference system used for the map you are requesting <br><br>
+	BBOX<br>
+	This is the minimum and maximum coordinates of the map to be displayed, in the SRS units <br><br>
+	WIDTH<br>
+	This is the width of the map in pixels <br><br>
+	HEIGHT<br>
+	This is the height of the map in pixels <br><br>
+	FORMAT<br>
+	This is the image format in which the map you are requesting is output 
+	</p>
 	<li>What is returned in response to a WMS GetMap request?</li>
-	<p class="answer"></p>
+	<p class="answer">An image of a map</p>
 	<li>What is the significance of transparency in WMS requests?</li>
-	<p class="answer"></p>
+	<p class="answer">Transparency allows the background of a map to be transparent 
+	instead of white or some other color, however only gifs support transparency.</p>
 	
 	
 	<h2>Question 4</h2>
 	<p>What OGC request would you use to inform the configuration of a 
 	client application (like ArcGIS) about an OGC service that you want to add layers from?</p>
-	<p class="answer"></p>
+	<p class="answer">Web Map Service</p>
 
 	
 	
@@ -55,13 +83,13 @@
 	[e.g. GetMap, GetCapabilities, GetCoverage, etc.] in your answer)</p>
 	<li>You want a map image representing three layers of data in a single 
 	JPEG for a specified area of interest.</li>
-	<p class="answer"></p>
+	<p class="answer">WMS GetMap</p>
 	<li>You want to retrieve data representing geometries and associated attributes 
 	for a road network, with the returned data in GML.</li>
-	<p class="answer"></p>
+	<p class="answer">WFS GetFeature</p>
 	<li>You want to retrieve data representing a digital elevation model 
 	(a raster dataset) in the form of a GeoTIFF.</li>
-	<p class="answer"></p>
+	<p class="answer">WCS GetCoverage</p>
 	
 	
 	<h2>Question 6</h2>
@@ -95,14 +123,14 @@
 	715663ba-c1c3-414c-84a7-c671526f8316/services/ogc/wms?SERVICE=wms&
 	REQUEST=GetCapabilities&VERSION=1.1.1</p>
 	<li>What is the Title of the service?</li>
-	<p class="answer"></p>
+	<p class="answer">rgis Dataset (715663ba-c1c3-414c-84a7-c671526f8316)</p>
 	<li>Who is the Contact Person for questions about the service?</li>
-	<p class="answer"></p>
+	<p class="answer">GStore Support</p>
 	<li>What are the available image formats for the GetMap request for this service?</li>
-	<p class="answer"></p>
+	<p class="answer">png, gif, jpeg, png 8bit, and tiff</p>
 	<li>What are the SRS/CRS’s for which layers from this service are available 
 	(remember that nested layers inherit the SRS/CRS of their parent layers).</li>
-	<p class="answer"></p>
+	<p class="answer">EPSG:4269, 4326, 4267, 26913, 26912, 26914, 26713, 26712, 26714, and 3857</p>
 	
 	
 	<h2>Question 9</h2>
@@ -110,7 +138,8 @@
 	for a 500x500 pixel map image that is 0.05-degrees wide and 0.05-degress high, 
 	with the SW corner of the map image located at 35°N and -106°45'E. Include in your 
 	write-up the complete GetMap request and the returned map image. </p>
-	<p></p>
+	<p class="answer">http://gstore.unm.edu/apps/rgis/datasets/715663ba-c1c3-414c-84a7-c671526f8316/services/ogc/wms?VERSION=1.1.1&SERVICE=wms&REQUEST=GetMap&BBOX=-106d45',35d,-105.5d45',35.5d&LAYERS=tl_2010_35_bg10&FORMAT=image/png&TRANSPARENT=TRUE&STYLES=&SRS=EPSG:4326&WIDTH=500&HEIGHT=500</p>
+		<p class="answer"><a href="images/wms500x500.png">500 x 500</a></p>
 	
 	<p><a href="index.html">Go Back Home</a></p>
 	</body>
