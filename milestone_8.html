@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Milestone 8</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		
+		<style type="text/css">
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;
+				margin-left: 5%; margin-right: 5%;
+				color: gray; background: white;
+				font-family: courier, monospace;}
+				
+		h1 { margin-left: -3%;}
+		h2,h3,h4,h5,h6 { margin-left: -2%; }
+		
+		#map { height: 95%; }
+		
+		</style>
+	
+	
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+    	<script type="text/javascript">        
+        // define global variables
+        var lon = 5.972222;
+        var lat = 50.436898;
+        var zoom = 14;
+        var map;
+        var layer;
+
+        // =============== Initialization function ===================
+        function init(){
+            map = new OpenLayers.Map( 'map' );
+            
+            // =========== OSM Map ====================
+            layer = new OpenLayers.Layer.OSM( "Open Street Map");
+            map.addLayer(layer);
+            
+            map.setCenter(
+                new OpenLayers.LonLat(lon, lat).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ), zoom
+            );                
+        }
+        // =============== End of Initialization Function ============
+        
+    	</script>
+	</head>
+	
+	
+	<body onload="init()"> 
+	
+		<h1><font color="red">Milestone 8</font></h1>
+	
+		<p>
+		Justin Collier<br>
+		03/26/14
+		</p>
+	
+		<h2>Question 1</h2>
+		<p>What area do you want to depict in your map? Why?</p>
+		<p>Circuit de Spa-Francorchamps, Belgium. It is my favorite race track.</p>
+	
+		<h2>Question 2</h2>
+		<p>What is the center point (latitude and longitude) of your area of interest?</p>
+		<p>50.436898, 5.972222</p>
+	
+		<h2>Question 3</h2>
+		<p>What base map(s) did you select for use in your map? Why?</p>
+		<p></p>
+	
+		<h2>Question 4</h2>
+		<p>What is the scale of your map (local, regional, continental, global)? How will 
+		this translate into your selection of an appropriate default zoom level for your map?</p>
+		<p></p>
+	
+		<h2>Question 5</h2>
+		<p>Embed the OpenLayers Map in your writeup (included with the answers to questions 
+		1-4 above) that is based upon your responses to questions 1-4 above.</p>
+		<p><a href="index.html">Go Back Home</a></p>
+		
+		<div id="map"></div>
+	
+	</body>
+	
+	
+</html>
