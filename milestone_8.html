@@ -7,6 +7,10 @@
 		<title>Milestone 8</title>
 		<link type="text/css" rel="stylesheet" href="style.css">
 		
+		<!-- Google Stuff -->
+		<link rel="stylesheet" href="styles/olGoogleStyles.css" type="text/css">
+    	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		
 		<style type="text/css">
 		html { height: 100% }
 		body { height: 100%; margin: 0; padding: 0;
@@ -21,32 +25,53 @@
 		
 		</style>
 	
-	
+		<!-- Javascript -->
 		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
     	<script type="text/javascript">        
-        // define global variables
+    	<!-- define global variables -->
         var lon = 5.972222;
         var lat = 50.436898;
-        var zoom = 14;
+        var zoom = 15;
         var map;
-        var layer;
+        var osm;
+        var ghyb, gsat;		//Google Maps Layers
 
-        // =============== Initialization function ===================
+        <!-- Initialization -->
         function init(){
-            map = new OpenLayers.Map( 'map' );
+            map = new OpenLayers.Map( 'map' , {
+                    controls: [
+                        new OpenLayers.Control.Navigation(),
+                        new OpenLayers.Control.Zoom(),
+                        new OpenLayers.Control.LayerSwitcher(),
+                        new OpenLayers.Control.ScaleLine(),
+                        new OpenLayers.Control.MousePosition(),
+                        new OpenLayers.Control.OverviewMap(),
+                    ],
+                    numZoomLevels: 6
+            });
             
-            // =========== OSM Map ====================
-            layer = new OpenLayers.Layer.OSM( "Open Street Map");
-            map.addLayer(layer);
+            <!-- OSM Map -->
+            osm = new OpenLayers.Layer.OSM( "Open Street Map");
+            
+            ghyb = new OpenLayers.Layer.Google(
+                "Google Hybrid",
+                {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
+            );
+            gsat = new OpenLayers.Layer.Google(
+                "Google Satellite",
+                {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 20}
+            );
+            
+            map.addLayers([osm, ghyb, gsat]);
             
             map.setCenter(
                 new OpenLayers.LonLat(lon, lat).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ), zoom
-            );                
+            );  
         }
-        // =============== End of Initialization Function ============
+        <!-- Initialization End -->
         
     	</script>
 	</head>
@@ -71,12 +96,14 @@
 	
 		<h2>Question 3</h2>
 		<p>What base map(s) did you select for use in your map? Why?</p>
-		<p></p>
+		<li>Open Street Map: It displays the race track nicely with contrasting colors.</li>
+		<li>Google Satellite: This give a satellite view of the track with no overlaid information.</li>
+		<li>Google Hybrid: This is also satellite imagery, but it includes some roads and reference information.</li>
 	
 		<h2>Question 4</h2>
 		<p>What is the scale of your map (local, regional, continental, global)? How will 
 		this translate into your selection of an appropriate default zoom level for your map?</p>
-		<p></p>
+		<p>Local. I chose a zoom level which could display the entire racetrack, but not much more.</p>
 	
 		<h2>Question 5</h2>
 		<p>Embed the OpenLayers Map in your writeup (included with the answers to questions 
@@ -86,6 +113,5 @@
 		<div id="map"></div>
 	
 	</body>
-	
 	
 </html>
