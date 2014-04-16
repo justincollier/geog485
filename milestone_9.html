@@ -69,111 +69,100 @@
     		
     		// =========== Create Some Styles ==============
 			// Define some Styles
-    		myRedPointStyle = {
-    			pointRadius: 12, 
-    			fillColor: "#CC0000",
-    			fillOpacity: .5,
-    			strokeOpacity: .5}
-    			
     		myBuildingStyle = {
-    			fillColor: "#88ff00",
-    			fillOpacity: .5,
+    			fillColor: "#ffff00",
+    			fillOpacity: .2,
     			strokeOpacity: .5,
-    			strokeColor: "#88ff00"}
+    			strokeColor: "#000000"}
     			
 			// =========== Create Some Geometries & Features ==============
 			// Key Coordinates (Geometries)
-			var Coord_classroom = new OpenLayers.Geometry.Point(50.446287,5.963323).transform(
-                    new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                );
     	    var Coord_track = new OpenLayers.Geometry.LinearRing([
-    			new OpenLayers.Geometry.Point(50.446287,5.963323).transform(
+    			new OpenLayers.Geometry.Point(5.963323, 50.446287).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.444955,5.967121).transform(
+    			new OpenLayers.Geometry.Point(5.967121, 50.444955).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.442133,5.971327).transform(
+    			new OpenLayers.Geometry.Point(5.971327, 50.442133).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.440691,5.972174).transform(
+    			new OpenLayers.Geometry.Point(5.972174, 50.440691).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.431363,5.97755).transform(
-                    new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			
-    			new OpenLayers.Geometry.Point(50.43083,5.976756).transform(
-                    new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(50.429607,5.976992).transform(
-                    new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(50.42783,5.972432).transform(
-                    new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(50.429361,5.974288).transform(
-                    new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(50.433899,5.972518).transform(
+    			new OpenLayers.Geometry.Point(5.97755, 50.431363).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
     			
-    			new OpenLayers.Geometry.Point(50.433817,5.969331).transform(
+    			new OpenLayers.Geometry.Point(5.976756, 50.43083).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.430413,5.966552).transform(
+    			new OpenLayers.Geometry.Point(5.976992, 50.429607).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.430605,5.964321).transform(
+    			new OpenLayers.Geometry.Point(5.972432, 50.42783).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.42878,5.961885).transform(
+    			new OpenLayers.Geometry.Point(5.974288, 50.429361).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.429955,5.959675).transform(
+    			new OpenLayers.Geometry.Point(5.972518, 50.433899).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
     			
-     			new OpenLayers.Geometry.Point(50.434329,5.966198).transform(
+    			new OpenLayers.Geometry.Point(5.969331, 50.433817).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.436817,5.968108).transform(
+    			new OpenLayers.Geometry.Point(5.966552, 50.430413).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.441477,5.96652).transform(
+    			new OpenLayers.Geometry.Point(5.964321, 50.430605).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
-    			new OpenLayers.Geometry.Point(50.441436,5.967164).transform(
+    			new OpenLayers.Geometry.Point(5.961885, 50.42878).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(5.959675, 50.429955).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			
+     			new OpenLayers.Geometry.Point(5.966198, 50.434329).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(5.968108, 50.436817).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(5.96652, 50.441477).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(5.967164, 50.441436).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject()
                 ),
    			]);
    			
        		// Corresponding Features
-    		var Point_classroom = new OpenLayers.Feature.Vector(Coord_classroom,null, myRedPointStyle);
     		var LinearRing_track = new OpenLayers.Feature.Vector(Coord_track, null, myBuildingStyle);
     		
-    		Layers["localFeatures"].addFeatures([Point_classroom, LinearRing_track]);
+    		Layers["localFeatures"].addFeatures([LinearRing_track]);
             
             
             map.setCenter(
