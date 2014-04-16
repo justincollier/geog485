@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Milestone 9</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		
+		<!-- Google Stuff -->
+		<link rel="stylesheet" href="styles/olGoogleStyles.css" type="text/css">
+    	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		
+		<style type="text/css">
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;
+				margin-left: 5%; margin-right: 5%;
+				color: gray; background: white;
+				font-family: courier, monospace;}
+				
+		h1 { margin-left: -3%;}
+		h2,h3,h4,h5,h6 { margin-left: -2%; }
+		
+		#map { height: 95%; }
+		
+		</style>
+	
+		<!-- Javascript -->
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+    	<script type="text/javascript">        
+    	//<!-- define global variables -->
+        var lon = 5.972222;
+        var lat = 50.436898;
+        var zoom = 14;
+        var map;
+        var myProjection = new OpenLayers.Projection("EPSG:4326")
+        var Layers = new Object();	//local features
+        var osm;					//OpenStreetMap
+        var ghyb;					//Google Maps Layer
+
+        //<!-- Initialization -->
+        function init(){
+            map = new OpenLayers.Map( 'map' , {
+                    controls: [
+                        new OpenLayers.Control.Navigation(),
+                        new OpenLayers.Control.Zoom(),
+                        new OpenLayers.Control.LayerSwitcher(),
+                        new OpenLayers.Control.ScaleLine(),
+                        new OpenLayers.Control.MousePosition(),
+                        new OpenLayers.Control.OverviewMap(),
+                    ],
+                    numZoomLevels: 6
+            });
+            
+            // OSM Map -->
+            osm = new OpenLayers.Layer.OSM( "Open Street Map");
+            
+            ghyb = new OpenLayers.Layer.Google(
+                "Google Hybrid",
+                {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
+            );
+            
+            map.addLayers([osm, ghyb]);
+            
+            
+			// =========== Create and add a Vector layer to the map that that will contain the created features ====
+    		Layers.localFeatures = new OpenLayers.Layer.Vector('My Local Features');
+    		map.addLayer(Layers.localFeatures);
+    		
+    		// =========== Create Some Styles ==============
+			// Define some Styles
+    		myRedPointStyle = {
+    			pointRadius: 12, 
+    			fillColor: "#CC0000",
+    			fillOpacity: .5,
+    			strokeOpacity: .5}
+    			
+    		myBuildingStyle = {
+    			fillColor: "#88ff00",
+    			fillOpacity: .5,
+    			strokeOpacity: .5,
+    			strokeColor: "#88ff00"}
+    			
+			// =========== Create Some Geometries & Features ==============
+			// Key Coordinates (Geometries)
+			var Coord_classroom = new OpenLayers.Geometry.Point(50.446287,5.963323).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                );
+    	    var Coord_track = new OpenLayers.Geometry.LinearRing([
+    			new OpenLayers.Geometry.Point(50.446287,5.963323).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.444955,5.967121).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.442133,5.971327).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.440691,5.972174).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.431363,5.97755).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			
+    			new OpenLayers.Geometry.Point(50.43083,5.976756).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.429607,5.976992).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.42783,5.972432).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.429361,5.974288).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.433899,5.972518).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			
+    			new OpenLayers.Geometry.Point(50.433817,5.969331).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.430413,5.966552).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.430605,5.964321).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.42878,5.961885).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.429955,5.959675).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			
+     			new OpenLayers.Geometry.Point(50.434329,5.966198).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.436817,5.968108).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.441477,5.96652).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+    			new OpenLayers.Geometry.Point(50.441436,5.967164).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ),
+   			]);
+   			
+       		// Corresponding Features
+    		var Point_classroom = new OpenLayers.Feature.Vector(Coord_classroom,null, myRedPointStyle);
+    		var LinearRing_track = new OpenLayers.Feature.Vector(Coord_track, null, myBuildingStyle);
+    		
+    		Layers["localFeatures"].addFeatures([Point_classroom, LinearRing_track]);
+            
+            
+            map.setCenter(
+                new OpenLayers.LonLat(lon, lat).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ), zoom
+            );  
+        }
+        //<!-- Initialization End -->
+        
+    	</script>
+	</head>
+	
+	
+	<body onload="init()"> 
+	
+		<h1><font color="red">Milestone 9</font></h1>
+	
+		<p>
+		Justin Collier<br>
+		04/01/14
+		</p>
+	
+		<h2>Question 1</h2>
+		<p>What area do you want to depict in your map? Why?</p>
+		<p>Circuit de Spa-Francorchamps, Belgium. It is my favorite race track.</p>
+	
+		<h2>Question 2</h2>
+		<p>What is the center point (latitude and longitude) of your area of interest?</p>
+		<p>50.436898, 5.972222</p>
+	
+		<h2>Question 3</h2>
+		<p>What base map(s) did you select for use in your map? Why?</p>
+		<li>Open Street Map: It displays the race track nicely with contrasting colors.</li>
+		<li>Google Satellite: This give a satellite view of the track with no overlaid information.</li>
+		<li>Google Hybrid: This is also satellite imagery, but it includes some roads and reference information.</li>
+	
+		<h2>Question 4</h2>
+		<p>What is the scale of your map (local, regional, continental, global)? How will 
+		this translate into your selection of an appropriate default zoom level for your map?</p>
+		<p>Local. I chose a zoom level which could display the entire racetrack, but not much more.</p>
+	
+		<h2>Question 5</h2>
+		<p>Embed the OpenLayers Map in your writeup (included with the answers to questions 
+		1-4 above) that is based upon your responses to questions 1-4 above.</p>
+		<p><a href="index.html">Go Back Home</a></p>
+		
+		<div id="map"></div>
+	
+	</body>
+	
+</html>
