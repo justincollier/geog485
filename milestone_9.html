@@ -64,105 +64,113 @@
             
             
 			// =========== Create and add a Vector layer to the map that that will contain the created features ====
-    		Layers.localFeatures = new OpenLayers.Layer.Vector('My Local Features');
+    		Layers.turns = new OpenLayers.Layer.Vector('Turns');
+			Layers.localFeatures = new OpenLayers.Layer.Vector('My Local Features');
+			map.addLayer(Layers.turns);
     		map.addLayer(Layers.localFeatures);
     		
     		// =========== Create Some Styles ==============
 			// Define some Styles
-    		myBuildingStyle = {
-    			fillColor: "#ffff00",
-    			fillOpacity: .2,
-    			strokeOpacity: .5,
-    			strokeColor: "#000000"}
+			turnPointStyle = {
+    			pointRadius: 8, 
+    			fillColor: "#000000",
+    			fillOpacity: .3,
+				strokeColor: "#ffffff"}
     			
 			// =========== Create Some Geometries & Features ==============
 			// Key Coordinates (Geometries)
-    	    var Coord_track = new OpenLayers.Geometry.LinearRing([
-    			new OpenLayers.Geometry.Point(5.963323, 50.446287).transform(
+			// Turns 1-5
+			var Coord_turn1 = new OpenLayers.Geometry.Point(5.963323, 50.446287).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.967121, 50.444955).transform(
+                    map.getProjectionObject());
+			var Coord_turn2 = new OpenLayers.Geometry.Point(5.967121, 50.444955).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.971327, 50.442133).transform(
+                    map.getProjectionObject());
+			var Coord_turn3 = new OpenLayers.Geometry.Point(5.971327, 50.442133).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.972174, 50.440691).transform(
+                    map.getProjectionObject());
+			var Coord_turn4 = new OpenLayers.Geometry.Point(5.972174, 50.440691).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.97755, 50.431363).transform(
+                    map.getProjectionObject());
+			var Coord_turn5 = new OpenLayers.Geometry.Point(5.97755, 50.431363).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			
-    			new OpenLayers.Geometry.Point(5.976756, 50.43083).transform(
+                    map.getProjectionObject());
+			// Turns 6-10
+			var Coord_turn6 = new OpenLayers.Geometry.Point(5.976756, 50.43083).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.976992, 50.429607).transform(
+                    map.getProjectionObject());
+			var Coord_turn7 = new OpenLayers.Geometry.Point(5.976992, 50.429607).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.972432, 50.42783).transform(
+                    map.getProjectionObject());
+			var Coord_turn8 = new OpenLayers.Geometry.Point(5.972432, 50.42783).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.974288, 50.429361).transform(
+                    map.getProjectionObject());
+			var Coord_turn9 = new OpenLayers.Geometry.Point(5.974288, 50.429361).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.972518, 50.433899).transform(
+                    map.getProjectionObject());
+			var Coord_turn10 = new OpenLayers.Geometry.Point(5.972518, 50.433899).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			
-    			new OpenLayers.Geometry.Point(5.969331, 50.433817).transform(
+                    map.getProjectionObject());
+			// Turns 11-15
+			var Coord_turn11 = new OpenLayers.Geometry.Point(5.969331, 50.433817).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.966552, 50.430413).transform(
+                    map.getProjectionObject());
+			var Coord_turn12 = new OpenLayers.Geometry.Point(5.966552, 50.430413).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.964321, 50.430605).transform(
+                    map.getProjectionObject());
+			var Coord_turn13 = new OpenLayers.Geometry.Point(5.964321, 50.430605).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.961885, 50.42878).transform(
+                    map.getProjectionObject());
+			var Coord_turn14 = new OpenLayers.Geometry.Point(5.961885, 50.42878).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.959675, 50.429955).transform(
+                    map.getProjectionObject());
+			var Coord_turn15 = new OpenLayers.Geometry.Point(5.959675, 50.429955).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			
-     			new OpenLayers.Geometry.Point(5.966198, 50.434329).transform(
+                    map.getProjectionObject());
+			// Turns 16-19
+			var Coord_turn16 = new OpenLayers.Geometry.Point(5.966198, 50.434329).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.968108, 50.436817).transform(
+                    map.getProjectionObject());
+			var Coord_turn17 = new OpenLayers.Geometry.Point(5.968108, 50.436817).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.96652, 50.441477).transform(
+                    map.getProjectionObject());
+			var Coord_turn18 = new OpenLayers.Geometry.Point(5.96652, 50.441477).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-    			new OpenLayers.Geometry.Point(5.967164, 50.441436).transform(
+                    map.getProjectionObject());
+			var Coord_turn19 = new OpenLayers.Geometry.Point(5.967164, 50.441436).transform(
                     new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ),
-   			]);
+                    map.getProjectionObject());
    			
        		// Corresponding Features
-    		var LinearRing_track = new OpenLayers.Feature.Vector(Coord_track, null, myBuildingStyle);
+			// Turns
+			var Point_turn1 = new OpenLayers.Feature.Vector(Coord_turn1,null,turnPointStyle);
+			var Point_turn2 = new OpenLayers.Feature.Vector(Coord_turn2,null,turnPointStyle);
+			var Point_turn3 = new OpenLayers.Feature.Vector(Coord_turn3,null,turnPointStyle);
+			var Point_turn4 = new OpenLayers.Feature.Vector(Coord_turn4,null,turnPointStyle);
+			var Point_turn5 = new OpenLayers.Feature.Vector(Coord_turn5,null,turnPointStyle);
+			
+			var Point_turn6 = new OpenLayers.Feature.Vector(Coord_turn6,null,turnPointStyle);
+			var Point_turn7 = new OpenLayers.Feature.Vector(Coord_turn7,null,turnPointStyle);
+			var Point_turn8 = new OpenLayers.Feature.Vector(Coord_turn8,null,turnPointStyle);
+			var Point_turn9 = new OpenLayers.Feature.Vector(Coord_turn9,null,turnPointStyle);
+			var Point_turn10 = new OpenLayers.Feature.Vector(Coord_turn10,null,turnPointStyle);
+			
+			var Point_turn11 = new OpenLayers.Feature.Vector(Coord_turn11,null,turnPointStyle);
+			var Point_turn12 = new OpenLayers.Feature.Vector(Coord_turn12,null,turnPointStyle);
+			var Point_turn13 = new OpenLayers.Feature.Vector(Coord_turn13,null,turnPointStyle);
+			var Point_turn14 = new OpenLayers.Feature.Vector(Coord_turn14,null,turnPointStyle);
+			var Point_turn15 = new OpenLayers.Feature.Vector(Coord_turn15,null,turnPointStyle);
+			
+			var Point_turn16 = new OpenLayers.Feature.Vector(Coord_turn16,null,turnPointStyle);
+			var Point_turn17 = new OpenLayers.Feature.Vector(Coord_turn17,null,turnPointStyle);
+			var Point_turn18 = new OpenLayers.Feature.Vector(Coord_turn18,null,turnPointStyle);
+			var Point_turn19 = new OpenLayers.Feature.Vector(Coord_turn19,null,turnPointStyle);
     		
-    		Layers["localFeatures"].addFeatures([LinearRing_track]);
+			//Adding features
+			Layers["turns"].addFeatures([Point_turn1, Point_turn2, Point_turn3, Point_turn4, Point_turn5]);
+			Layers["turns"].addFeatures([Point_turn6, Point_turn7, Point_turn8, Point_turn9, Point_turn10]);
+			Layers["turns"].addFeatures([Point_turn11, Point_turn12, Point_turn13, Point_turn14, Point_turn15]);
+			Layers["turns"].addFeatures([Point_turn16, Point_turn17, Point_turn18, Point_turn19]);
             
             
             map.setCenter(
