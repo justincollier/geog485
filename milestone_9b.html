@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Milestone 9b</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		
+		<!-- Google Stuff -->
+		<link rel="stylesheet" href="styles/olGoogleStyles.css" type="text/css">
+    	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		
+		<style type="text/css">
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;
+				margin-left: 5%; margin-right: 5%;
+				color: gray; background: white;
+				font-family: courier, monospace;}
+				
+		h1 { margin-left: -3%;}
+		h2,h3,h4,h5,h6 { margin-left: -2%; }
+		
+		#map { height: 95%; }
+		
+		</style>
+	
+		<!-- Javascript -->
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+    	<script type="text/javascript">        
+    	//<!-- define global variables -->
+        var lon = -106.611328;
+        var lat = 35.106428;
+        var zoom = 7;
+        var map;
+		var myProjection = new OpenLayers.Projection("EPSG:4326")
+        var osm;
+        var ghyb, countyKML, countyWMS;		//Google Maps Layers and others
+
+        //<!-- Initialization -->
+        function init(){
+            map = new OpenLayers.Map( 'map' , {
+                    controls: [
+                        new OpenLayers.Control.Navigation(),
+                        new OpenLayers.Control.Zoom(),
+                        new OpenLayers.Control.LayerSwitcher(),
+                        new OpenLayers.Control.ScaleLine(),
+                        new OpenLayers.Control.MousePosition(),
+                        new OpenLayers.Control.OverviewMap(),
+                    ],
+                    numZoomLevels: 6
+            });
+			
+			//Style
+			countyStyle = {
+    			fillOpacity: 0,
+    			strokeOpacity: .4,
+    			strokeColor: "#000000"}
+            
+            //<!-- OSM Map -->
+            osm = new OpenLayers.Layer.OSM( "Open Street Map");
+            
+            ghyb = new OpenLayers.Layer.Google(
+                "Google Hybrid",
+                {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
+            );
+            map.addLayers([osm, ghyb]);
+			
+			//Adding KML layer
+			countyKML = new OpenLayers.Layer.Vector("NM Counties - KML", {
+				projection: map.displayProjection,
+				style: countyStyle,
+				strategies: [new OpenLayers.Strategy.Fixed()],
+				protocol: new OpenLayers.Protocol.HTTP({
+					url: "http://kkb-web.s3.amazonaws.com/data/NMCounties.kml",
+					format: new OpenLayers.Format.KML({
+						extractAttributes: true
+					})
+				})
+			});
+			map.addLayer(countyKML)
+			
+			//Adding WMS layer
+			countyWMS = new OpenLayers.Layer.WMS( 
+				"US Counties", 
+				"http://webservices.nationalatlas.gov/wms?",
+				{layers: "counties", version: '1.3.0', transparent: 'TRUE'},
+				{isBaseLayer: false, visibility: false, opacity: .8}
+			);
+			map.addLayer(countyWMS);
+            
+            map.setCenter(
+                new OpenLayers.LonLat(lon, lat).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()
+                ), zoom
+            );  
+        }
+        //<!-- Initialization End -->
+        
+    	</script>
+	</head>
+	
+	
+	<body onload="init()"> 
+	
+		<h1><font color="red">Milestone 9b</font></h1>
+	
+		<p>
+		Justin Collier<br>
+		04/01/14
+		</p>
+	
+		<h2>Question 1</h2>
+		<p>What area do you want to depict in your map? Why?</p>
+		<p>Circuit de Spa-Francorchamps, Belgium. It is my favorite race track.</p>
+	
+		<h2>Question 2</h2>
+		<p>What is the center point (latitude and longitude) of your area of interest?</p>
+		<p>50.436898, 5.972222</p>
+	
+		<h2>Question 3</h2>
+		<p>What base map(s) did you select for use in your map? Why?</p>
+		<li>Open Street Map: It displays the race track nicely with contrasting colors.</li>
+		<li>Google Satellite: This give a satellite view of the track with no overlaid information.</li>
+		<li>Google Hybrid: This is also satellite imagery, but it includes some roads and reference information.</li>
+	
+		<h2>Question 4</h2>
+		<p>What is the scale of your map (local, regional, continental, global)? How will 
+		this translate into your selection of an appropriate default zoom level for your map?</p>
+		<p>Local. I chose a zoom level which could display the entire racetrack, but not much more.</p>
+	
+		<h2>Question 5</h2>
+		<p>Embed the OpenLayers Map in your writeup (included with the answers to questions 
+		1-4 above) that is based upon your responses to questions 1-4 above.</p>
+		<p><a href="index.html">Go Back Home</a></p>
+		
+		<div id="map"></div>
+	
+	</body>
+	
+</html>
