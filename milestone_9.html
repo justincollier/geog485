@@ -31,7 +31,7 @@
     	//<!-- define global variables -->
         var lon = 5.972222;
         var lat = 50.436898;
-        var zoom = 14;
+        var zoom = 15;
         var map;
         var myProjection = new OpenLayers.Projection("EPSG:4326")
         var Layers = new Object();	//local features
@@ -65,9 +65,15 @@
             
 			// =========== Create and add a Vector layer to the map that that will contain the created features ====
     		Layers.turns = new OpenLayers.Layer.Vector('Turns');
-			Layers.localFeatures = new OpenLayers.Layer.Vector('My Local Features');
+			Layers.startline = new OpenLayers.Layer.Vector('Start/Finish Line');
+			Layers.straight = new OpenLayers.Layer.Vector('Kemmel Straight');
+			Layers.pitroad = new OpenLayers.Layer.Vector('Pit Road');
+			Layers.karttrack = new OpenLayers.Layer.Vector('Kart Track');
 			map.addLayer(Layers.turns);
-    		map.addLayer(Layers.localFeatures);
+			map.addLayer(Layers.startline);
+    		map.addLayer(Layers.straight);
+			map.addLayer(Layers.pitroad);
+			map.addLayer(Layers.karttrack);
     		
     		// =========== Create Some Styles ==============
 			// Define some Styles
@@ -75,6 +81,28 @@
     			pointRadius: 8, 
     			fillColor: "#000000",
     			fillOpacity: .3,
+				strokeColor: "#ffffff"}
+				
+			startPointStyle = {
+    			pointRadius: 10, 
+    			fillColor: "#00ff00",
+    			fillOpacity: .5,
+				strokeColor: "#ffffff"}
+				
+			straightStyle = {
+    			strokeOpacity: .8,
+    			strokeColor: "#ffffff",
+    			strokeWidth: 10}
+				
+			pitroadStyle = {
+    			strokeOpacity: .8,
+    			strokeColor: "#ffffff",
+    			strokeWidth: 5}
+				
+			karttrackStyle = {
+    			pointRadius: 45,
+    			fillColor: "#000000",
+    			fillOpacity: .1,
 				strokeColor: "#ffffff"}
     			
 			// =========== Create Some Geometries & Features ==============
@@ -137,7 +165,67 @@
 			var Coord_turn18 = new OpenLayers.Geometry.Point(5.96652, 50.441477).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject());
-			var Coord_turn19 = new OpenLayers.Geometry.Point(5.967164, 50.441436).transform(
+			var Coord_turn19 = new OpenLayers.Geometry.Point(5.967239, 50.441649).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject());
+					
+			//Start Line
+			var Coord_startline = new OpenLayers.Geometry.Point(5.96527, 50.443945).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject());
+					
+			//Kemmel Straight
+			var Coord_straight = new OpenLayers.Geometry.LineString([
+   				Coord_turn4,
+     			new OpenLayers.Geometry.Point(5.973151, 50.439714).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+				new OpenLayers.Geometry.Point(5.974522, 50.438238).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+				new OpenLayers.Geometry.Point(5.975767, 50.435511).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+				new OpenLayers.Geometry.Point(5.976657, 50.433448).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+     			Coord_turn5
+   			]);
+			
+			//Pit Road
+			var Coord_pitroad = new OpenLayers.Geometry.LineString([
+   				new OpenLayers.Geometry.Point(5.967196, 50.441491).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+     			new OpenLayers.Geometry.Point(5.967484, 50.441552).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+				new OpenLayers.Geometry.Point(5.967592, 50.441709).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+				new OpenLayers.Geometry.Point(5.966905, 50.442584).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+				new OpenLayers.Geometry.Point(5.966358, 50.442953).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+					
+     			new OpenLayers.Geometry.Point(5.963933, 50.445665).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+				new OpenLayers.Geometry.Point(5.963993, 50.445863).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+				new OpenLayers.Geometry.Point(5.964245, 50.445904).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+				new OpenLayers.Geometry.Point(5.965914, 50.445436).transform(
+                    new OpenLayers.Projection("EPSG:4326"),
+                    map.getProjectionObject()),
+   			]);
+			
+			//Kart Track
+			var Coord_karttrack = new OpenLayers.Geometry.Point(5.963022, 50.43231).transform(
                     new OpenLayers.Projection("EPSG:4326"),
                     map.getProjectionObject());
    			
@@ -165,12 +253,24 @@
 			var Point_turn17 = new OpenLayers.Feature.Vector(Coord_turn17,null,turnPointStyle);
 			var Point_turn18 = new OpenLayers.Feature.Vector(Coord_turn18,null,turnPointStyle);
 			var Point_turn19 = new OpenLayers.Feature.Vector(Coord_turn19,null,turnPointStyle);
-    		
+			//Start Line
+			var Point_startline = new OpenLayers.Feature.Vector(Coord_startline, null, startPointStyle);
+			//Kemmel Straight
+			var LineString_straight = new OpenLayers.Feature.Vector(Coord_straight, null, straightStyle);
+			//Pit Road
+    		var LineString_pitroad = new OpenLayers.Feature.Vector(Coord_pitroad, null, pitroadStyle);
+			//Kart Track
+			var Point_karttrack = new OpenLayers.Feature.Vector(Coord_karttrack, null, karttrackStyle);
+			
 			//Adding features
 			Layers["turns"].addFeatures([Point_turn1, Point_turn2, Point_turn3, Point_turn4, Point_turn5]);
 			Layers["turns"].addFeatures([Point_turn6, Point_turn7, Point_turn8, Point_turn9, Point_turn10]);
 			Layers["turns"].addFeatures([Point_turn11, Point_turn12, Point_turn13, Point_turn14, Point_turn15]);
 			Layers["turns"].addFeatures([Point_turn16, Point_turn17, Point_turn18, Point_turn19]);
+			Layers["straight"].addFeatures([LineString_straight]);
+			Layers["startline"].addFeatures([Point_startline]);
+			Layers["pitroad"].addFeatures([LineString_pitroad]);
+			Layers["karttrack"].addFeatures([Point_karttrack]);
             
             
             map.setCenter(
