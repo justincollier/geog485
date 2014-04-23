@@ -7,9 +7,6 @@
 		<title>Milestone 9b</title>
 		<link type="text/css" rel="stylesheet" href="style.css">
 		
-		<!-- Google Stuff -->
-		<link rel="stylesheet" href="styles/olGoogleStyles.css" type="text/css">
-    	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		
 		<style type="text/css">
 		html { height: 100% }
@@ -31,11 +28,10 @@
     	//<!-- define global variables -->
         var lon = -106.611328;
         var lat = 35.106428;
-        var zoom = 7;
+        var zoom = 5;
         var map;
 		var myProjection = new OpenLayers.Projection("EPSG:4326")
-        var osm;
-        var ghyb, countyKML, countyWMS;		//Google Maps Layers and others
+		var Layers = new Object();
 
         //<!-- Initialization -->
         function init(){
@@ -48,26 +44,25 @@
                         new OpenLayers.Control.MousePosition(),
                         new OpenLayers.Control.OverviewMap(),
                     ],
-                    numZoomLevels: 6
+                    numZoomLevels: 20
             });
 			
 			//Style
 			countyStyle = {
     			fillOpacity: 0,
     			strokeOpacity: .4,
-    			strokeColor: "#000000"}
+    			strokeColor: "#ffffff"}
             
-            //<!-- OSM Map -->
-            osm = new OpenLayers.Layer.OSM( "Open Street Map");
-            
-            ghyb = new OpenLayers.Layer.Google(
-                "Google Hybrid",
-                {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
+            Layers.baseMap = new OpenLayers.Layer.WMS( 
+            	"US Base Map", 
+            	"http://basemap.nationalmap.gov/arcgis/services/USGSImageryTopo/MapServer/WmsServer?",
+            	{layers: "0", version: '1.3.0', transparent: 'false'},
+            	{isBaseLayer: true}
             );
-            map.addLayers([osm, ghyb]);
+            map.addLayer(Layers.baseMap)
 			
 			//Adding KML layer
-			countyKML = new OpenLayers.Layer.Vector("NM Counties - KML", {
+			Layers.countyKML = new OpenLayers.Layer.Vector("NM Counties - KML", {
 				projection: map.displayProjection,
 				style: countyStyle,
 				strategies: [new OpenLayers.Strategy.Fixed()],
@@ -78,22 +73,27 @@
 					})
 				})
 			});
-			map.addLayer(countyKML)
+			map.addLayer(Layers.countyKML)
 			
-			//Adding WMS layer
-			countyWMS = new OpenLayers.Layer.WMS( 
-				"US Counties", 
-				"http://webservices.nationalatlas.gov/wms?",
-				{layers: "counties", version: '1.3.0', transparent: 'TRUE'},
-				{isBaseLayer: false, visibility: false, opacity: .8}
-			);
-			map.addLayer(countyWMS);
+			//Adding WMS layers
+			Layers.county = new OpenLayers.Layer.WMS( 
+            	"US Counties - WMS", 
+            	"http://webservices.nationalatlas.gov/wms/boundaries?",
+            	{layers: "counties", version: '1.3.0', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.county)
+            
+            Layers.div = new OpenLayers.Layer.WMS( 
+            	"Continental Divide - WMS", 
+            	"http://webservices.nationalatlas.gov/wms/geology?",
+            	{layers: "div", version: '1.3.0', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.div)
             
             map.setCenter(
-                new OpenLayers.LonLat(lon, lat).transform(
-                    new OpenLayers.Projection("EPSG:4326"),
-                    map.getProjectionObject()
-                ), zoom
+                new OpenLayers.LonLat(lon, lat), zoom
             );  
         }
         //<!-- Initialization End -->
