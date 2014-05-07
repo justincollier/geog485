@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Milestone 13</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		
+		
+		<style type="text/css">
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;
+				margin-left: 5%; margin-right: 5%;
+				color: gray; background: white;
+				font-family: courier, monospace;}
+				
+		h1 { margin-left: -3%;}
+		h2,h3,h4,h5,h6 { margin-left: -2%; }
+		
+		#map { height: 95%; }
+		
+		</style>
+	
+		<!-- Javascript -->
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+    	<script type="text/javascript">        
+    	//<!-- define global variables -->
+        var lon = -106.7;
+        var lat = 35;
+        var zoom = 10;
+        var map;
+		var myProjection = new OpenLayers.Projection("EPSG:4269")
+		var Layers = new Object();
+
+        //<!-- Initialization -->
+        function init(){
+            map = new OpenLayers.Map( 'map' , {
+                    controls: [
+                        new OpenLayers.Control.Navigation(),
+                        new OpenLayers.Control.Zoom(),
+                        new OpenLayers.Control.LayerSwitcher(),
+                        new OpenLayers.Control.ScaleLine(),
+                        new OpenLayers.Control.MousePosition(),
+                        new OpenLayers.Control.OverviewMap(),
+                    ],
+                    numZoomLevels: 20
+            });
+			
+			//Style
+			countyStyle = {
+    			fillOpacity: 0,
+    			strokeOpacity: .4,
+    			strokeColor: "#ffffff"}
+            
+			//Basemap
+            Layers.baseMap = new OpenLayers.Layer.WMS( 
+            	"US Base Map", 
+            	"http://basemap.nationalmap.gov/arcgis/services/USGSImageryTopo/MapServer/WmsServer?",
+            	{layers: "0", version: '1.3.0', transparent: 'false'},
+            	{isBaseLayer: true}
+            );
+            map.addLayer(Layers.baseMap)
+	
+			
+			//Adding WMS layers
+			//NM Aquifers
+			Layers.aqua = new OpenLayers.Layer.WMS( 
+            	"NM Aquifers", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "aquifrp025", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.aqua)
+			
+			
+			//NM Counties
+			Layers.county = new OpenLayers.Layer.WMS( 
+            	"NM Counties", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "tl_2010_35_county10", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.county)
+			
+			
+			//NM Wells
+			Layers.water = new OpenLayers.Layer.WMS( 
+            	"NM Surface Water", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "hyd2shp", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.water)
+			
+			
+			//NM Wells
+			Layers.wells = new OpenLayers.Layer.WMS( 
+            	"NM Wells", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "ose_wells03shp", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.wells)
+			
+			
+			//NM Topolines
+			Layers.topo = new OpenLayers.Layer.WMS( 
+            	"NM Topolines", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "hyp2shp", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.topo)
+			
+			
+            
+            map.setCenter(
+                new OpenLayers.LonLat(lon, lat), zoom
+            );  
+        }
+        //<!-- Initialization End -->
+        
+    	</script>
+	</head>
+	
+	
+	<body onload="init()"> 
+	
+		<h1><font color="red">Milestone 13</font></h1>
+	
+		<p>
+		Justin Collier<br>
+		05/07/14
+		</p>
+		<p>Hello, welcome to my map.<br>
+		The purpose of this map is to show you, the user, the various water sources in Bernalillo County, NM. 
+		This map will show you the county lines of New Mexico, the aquifers beneath the land, the rivers on 
+		the land, the wells throughout the state where people pump water from the ground, and some Topographic contour lines 
+		to give you an idea of how steep/flat this landscape is. However, all of this information is invisible by default.</p>
+		<p>In order to make these features visible you'll have to click on the blue/white plus sign on the top RIGHT corner of the map. 
+		(The one on the left side is used for zooming) This will open a menu in which you can click the check boxes to make an information layer 
+		visible or not. I recommend looking at each layer by itself first, before making all of them visible at once. Have fun!</p>
+		<p><a href="index.html">Go Back Home</a></p>
+		
+		<div id="map"></div>
+	
+	</body>
+	
+</html>
