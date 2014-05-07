@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Deep Dive 3</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<style>p.answer { color: black; }</style>
+	</head>
+	<body>
+	<h1><font color="red">Deep Dive 3</font></h1>
+	
+	<p>
+	Justin Collier<br>
+	04/30/14
+	</p>
+	
+	
+	<h2>Question 1</h2>
+	<p>What is the high-level description of the problem/question you want to help answer through 
+	the presentation of a collection of geographic data over the internet? Please answer in a 
+	short paragraph.</p>
+	<p class="answer">For this assignment I'd like to display all of the water sources present in Bernalillo County. 
+	This will include surface water and groundwater. I also hope to display some more specific water sources, like wells.</p>
+	
+	
+	<h2>Question 2</h2>
+	<p>Who is the target audience for the information you want to provide?</p>
+	<p class="answer">My target audience is pretty much everyone, but I'll focus on the general public.</p>
+	
+	
+	<h2>Question 3</h2>
+	<p>What geographic region does your problem area represent? Please describe it in words 
+	(e.g. New Mexico, Alberta Canada, etc.) and define it in terms of a geographic (WGS84) 
+	(latitude and longitude) bounding box.</p>
+	<p class="answer">Bernalillo county, New Mexico, USA: -107.19635, 35.218697 (upper left corner) to -106.153078, 34.870158 (lower right corner).</p>
+	
+	
+	<h2>Question 4</h2>
+	<p>What types of data do you want to include in your project? Include a description 
+	(data content: e.g. elevation data, hydrographic survey, etc.) and types (i.e. raster, vector).</p>
+	<p class="answer">I'd like to include a raster basemap, vector county lines, vector surface water/groundwater data.</p>
+	
+	
+	<h2>Question 5</h2>
+	<p>What projection will you use for the presentation of your project data? Again, describe it, 
+	provide your reasoning for selection, and provide the corresponding EPSG code.</p>
+	<p class="answer">I'd like to use WGS 84 EPSG:4326 because it is common and I've worked with it already. 
+	However, the data I've already found is only in NAD83 EPSG:4269, so I'll probably be using that.</p>
+	
+	
+	<h2>Question 6</h2>
+	<p>Where do you anticipate acquiring data for the project from?</p>
+	<p class="answer">I will most likely be getting my data from RGIS since my area of focus is in New Mexico. 
+	However, I'll obtain my basemap elsewhere, most likely from nationalmap.gov as I've used it before.</p>
+	
+	
+	<h2>Question 7</h2>
+	<p>What barriers to acquiring and processing the needed data do you anticipate?</p>
+	<p class="answer">The main barrier I expect to face is finding my data. 
+	I also expect to go through many hardships getting this data all working together.</p>
+	
+	
+	<h2>Dataset 1</h2>
+	<li>What is the name of the dataset?</li>
+	<p class="answer">hyp2shp; NM 500 Foot Contour Intervals</p>
+	<li>What type of data (raster/vector) are in the dataset?</li>
+	<p class="answer">vector, line</p>
+	<li>What is its format?</li>
+	<p class="answer">shapefile</p>
+	<li>What is its coordinate reference system?</li>
+	<p class="answer">EPSG:4269</p>
+	<p class="answer">EPSG:7019</p>
+	<li>What are the spatial extents of the dataset?</li>
+	<p class="answer">East: -109.05046081543</p>
+	<p class="answer">West: -102.997032165527</p>
+	<p class="answer">North: 37.000560760498</p>
+	<p class="answer">South: 31.3323936462402</p>
+	
+	<h2>Dataset 2</h2>
+	<li>What is the name of the dataset?</li>
+	<p class="answer">hyd2shp; NM Surface Water & Surface Drainage</p>
+	<li>What type of data (raster/vector) are in the dataset?</li>
+	<p class="answer">vector, line</p>
+	<li>What is its format?</li>
+	<p class="answer">shapefile</p>
+	<li>What is its coordinate reference system?</li>
+	<p class="answer">EPSG:4267</p>
+	<p class="answer">EPSG:7008</p>
+	<li>What are the spatial extents of the dataset?</li>
+	<p class="answer">East: -109.051338195801</p>
+	<p class="answer">West: -102.998901367187</p>
+	<p class="answer">North: 37.0017471313477</p>
+	<p class="answer">South: 31.3308715820312</p>
+	
+	<h2>Dataset 3</h2>
+	<li>What is the name of the dataset?</li>
+	<p class="answer">aquifrp025; NM Aquifers</p>
+	<li>What type of data (raster/vector) are in the dataset?</li>
+	<p class="answer">vector, polygon</p>
+	<li>What is its format?</li>
+	<p class="answer">shapefile</p>
+	<li>What is its coordinate reference system?</li>
+	<p class="answer">EPSG:4269</p>
+	<p class="answer">EPSG:7019</p>
+	<li>What are the spatial extents of the dataset?</li>
+	<p class="answer">East: -160.236053332639</p>
+	<p class="answer">West: -64.5661622435395</p>
+	<p class="answer">North: 49.3856196512481</p>
+	<p class="answer">South: 17.6746926217151</p>
+	
+	<h2>Dataset 4</h2>
+	<li>What is the name of the dataset?</li>
+	<p class="answer">ose_wells03shp; NM Water Wells - 2003 - OSE</p>
+	<li>What type of data (raster/vector) are in the dataset?</li>
+	<p class="answer">vector, point</p>
+	<li>What is its format?</li>
+	<p class="answer">shapefile</p>
+	<li>What is its coordinate reference system?</li>
+	<p class="answer">EPSG:4269</p>
+	<p class="answer">EPSG:7019</p>
+	<p class="answer">EPSG:26713</p>
+	<li>What are the spatial extents of the dataset?</li>
+	<p class="answer">East: -109.048135696585</p>
+	<p class="answer">West: -103.043257256508</p>
+	<p class="answer">North: 36.9997012509488</p>
+	<p class="answer">South: 31.3357751695661</p>
+	
+	<h2>Dataset 5</h2>
+	<li>What is the name of the dataset?</li>
+	<p class="answer"></p>
+	<li>What type of data (raster/vector) are in the dataset?</li>
+	<p class="answer"></p>
+	<li>What is its format?</li>
+	<p class="answer"></p>
+	<li>What is its coordinate reference system?</li>
+	<p class="answer"></p>
+	<li>What are the spatial extents of the dataset?</li>
+	<p class="answer">East: -109.05046081543</p>
+	<p class="answer">West: </p>
+	<p class="answer">North: </p>
+	<p class="answer">South: </p>
+	
+	
+	<p><a href="index.html">Go Back Home</a></p>
+	</body>
+</html>
