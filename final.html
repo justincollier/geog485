@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<title>Final</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		
+		
+		<style type="text/css">
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0;
+				margin-left: 5%; margin-right: 5%;
+				color: gray; background: white;
+				font-family: courier, monospace;}
+				
+		h1 { margin-left: -3%;}
+		h2,h3,h4,h5,h6 { margin-left: -2%; }
+		
+		#map { height: 95%; }
+		
+		</style>
+	
+		<!-- Javascript -->
+		<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+    	<script type="text/javascript">        
+    	//<!-- define global variables -->
+        var lon = -106.6;
+        var lat = 35.05;
+        var zoom = 12;
+        var map;
+		var myProjection = new OpenLayers.Projection("EPSG:26913")
+		var Layers = new Object();
+
+        //<!-- Initialization -->
+        function init(){
+            map = new OpenLayers.Map( 'map' , {
+                    controls: [
+                        new OpenLayers.Control.Navigation(),
+                        new OpenLayers.Control.Zoom(),
+                        new OpenLayers.Control.LayerSwitcher(),
+                        new OpenLayers.Control.ScaleLine(),
+                        new OpenLayers.Control.MousePosition(),
+                        new OpenLayers.Control.OverviewMap(),
+                    ],
+                    numZoomLevels: 20
+            });
+            
+			//Basemap
+            Layers.baseMap = new OpenLayers.Layer.WMS( 
+            	"US Base Map", 
+            	"http://basemap.nationalmap.gov/arcgis/services/USGSImageryTopo/MapServer/WmsServer?",
+            	{layers: "0", version: '1.3.0', transparent: 'false'},
+            	{isBaseLayer: true}
+            );
+            map.addLayer(Layers.baseMap)
+	
+			
+			//Adding WMS layers
+			//A5 TiFF
+			Layers.a5 = new OpenLayers.Layer.WMS( 
+            	"A5 GeoTiFF", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "35106-A5", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.a5)
+			
+			
+			//A6 TiFF
+			Layers.a6 = new OpenLayers.Layer.WMS( 
+            	"A6 GeoTiFF", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "35106-A6", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.a6)
+            
+            
+            //A5_CONT
+			Layers.a5cont = new OpenLayers.Layer.WMS( 
+            	"A5_CONT", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/wms?",
+            	{layers: "35106-A5_CONT", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.a5cont)
+			
+			
+			//A6_CONT
+			Layers.a6cont = new OpenLayers.Layer.WMS( 
+            	"A6_CONT", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/wms?",
+            	{layers: "35106-A6_CONT", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.a6cont)
+			
+			
+			//tgr2006
+			Layers.tgr = new OpenLayers.Layer.WMS( 
+            	"tgr2006", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "tgr2006se_bern_lka", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.tgr)
+            
+            
+            //Adding STYLED layers
+			//A5 Styled
+			Layers.a5style = new OpenLayers.Layer.WMS( 
+            	"A5 Styled", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "A5_styled", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.a5style)
+            
+            
+            //tgr Styled
+			Layers.tgrstyle = new OpenLayers.Layer.WMS( 
+            	"tgr2006 Styled", 
+            	"http://geog485.unm.edu:8080/geoserver/s_jdcollier/ows?",
+            	{layers: "tgr2006_styled", version: '1.1.1', transparent: 'true'},
+            	{isBaseLayer: false, visibility: false}
+            );
+            map.addLayer(Layers.tgrstyle)
+			
+            
+            map.setCenter(
+                new OpenLayers.LonLat(lon, lat), zoom
+            );  
+        }
+        //<!-- Initialization End -->
+        
+    	</script>
+	</head>
+	
+	
+	<body onload="init()"> 
+	
+		<h1><font color="red">Final</font></h1>
+	
+		<p>
+		Justin Collier<br>
+		05/14/14
+		</p>
+	
+  		<h2>35106-A5.tif GDALinfo</h2>
+		<p>justins-air:clipped justin$ gdalinfo 35106-A5.tif <br>
+		Driver: GTiff/GeoTIFF <br>
+		Files: 35106-A5.tif <br>
+		Size is 1169, 1411 <br>
+		Coordinate System is: <br>
+		PROJCS["NAD83 / UTM zone 13N", <br>&nbsp
+    		GEOGCS["NAD83", <br>&nbsp&nbsp
+       		 DATUM["North_American_Datum_1983", <br>&nbsp&nbsp&nbsp
+         		   SPHEROID["GRS 1980",6378137,298.2572221010002, <br>&nbsp&nbsp&nbsp&nbsp
+          		      AUTHORITY["EPSG","7019"]], <br>&nbsp&nbsp&nbsp
+          		  AUTHORITY["EPSG","6269"]], <br>&nbsp&nbsp
+     		   PRIMEM["Greenwich",0], <br>&nbsp&nbsp
+    		   UNIT["degree",0.0174532925199433], <br>&nbsp&nbsp
+    		    AUTHORITY["EPSG","4269"]], <br>&nbsp
+ 		   PROJECTION["Transverse_Mercator"], <br>&nbsp
+ 		   PARAMETER["latitude_of_origin",0], <br>&nbsp
+ 		   PARAMETER["central_meridian",-105], <br>&nbsp
+  		  PARAMETER["scale_factor",0.9996], <br>&nbsp
+  		  PARAMETER["false_easting",500000], <br>&nbsp
+ 		   PARAMETER["false_northing",0], <br>&nbsp
+  		  UNIT["metre",1, <br>&nbsp&nbsp
+  		      AUTHORITY["EPSG","9001"]], <br>&nbsp
+  		  AUTHORITY["EPSG","26913"]]</p>
+  		<h2>35106-A5.tif Preview</h2>
+		<img src="final/a5.png" alt="A5 GeoTiFF"><br><br>
+		<h2>35106-A5_CONT.shp Preview</h2>
+		<img src="final/a5_cont.png" alt="A5 Shapefile"><br><br>
+		
+		<h2>35106-A6.tif GDALinfo</h2>
+		<p>justins-air:clipped justin$ gdalinfo 35106-A6.tif <br>
+		Driver: GTiff/GeoTIFF <br>
+		Files: 35106-A6.tif <br>
+		Size is 1170, 1413 <br>
+		Coordinate System is: <br>
+		PROJCS["NAD83 / UTM zone 13N", <br>&nbsp
+    		GEOGCS["NAD83", <br>&nbsp&nbsp
+        		DATUM["North_American_Datum_1983", <br>&nbsp&nbsp&nbsp
+            		SPHEROID["GRS 1980",6378137,298.2572221010002, <br>&nbsp&nbsp&nbsp&nbsp
+                		AUTHORITY["EPSG","7019"]], <br>&nbsp&nbsp&nbsp
+            		AUTHORITY["EPSG","6269"]], <br>&nbsp&nbsp
+        		PRIMEM["Greenwich",0], <br>&nbsp&nbsp
+        		UNIT["degree",0.0174532925199433], <br>&nbsp&nbsp
+        		AUTHORITY["EPSG","4269"]], <br>&nbsp
+    		PROJECTION["Transverse_Mercator"], <br>&nbsp
+    		PARAMETER["latitude_of_origin",0], <br>&nbsp
+    		PARAMETER["central_meridian",-105], <br>&nbsp
+    		PARAMETER["scale_factor",0.9996], <br>&nbsp
+    		PARAMETER["false_easting",500000], <br>&nbsp
+    		PARAMETER["false_northing",0], <br>&nbsp
+    		UNIT["metre",1, <br>&nbsp&nbsp
+        		AUTHORITY["EPSG","9001"]], <br>&nbsp
+    		AUTHORITY["EPSG","26913"]]</p>
+  		<h2>35106-A6.tif Preview</h2>
+		<img src="final/a6.png" alt="A6 GeoTiFF"><br><br>
+		<h2>35106-A6_CONT.shp Preview</h2>
+		<img src="final/a6_cont.png" alt="A6 Shapefile"><br><br>
+		
+		<h2>tgr2006se_bern_lka.shp GDALinfo</h2>
+		<p>justins-air:clipped justin$ ogrinfo -al tgr2006se_bern_lka.shp <br>
+		INFO: Open of `tgr2006se_bern_lka.shp' <br>&nbsp
+      		using driver `ESRI Shapefile' successful. <br> <br>
+
+		Layer name: tgr2006se_bern_lka <br>
+		Geometry: Line String <br>
+		Feature Count: 8451 <br>
+		Extent: (-106.647182, 35.032764) - (-106.524194, 35.120146) <br>
+		Layer SRS WKT: <br>
+		GEOGCS["GCS_WGS_1984", <br>&nbsp
+    		DATUM["WGS_1984", <br>&nbsp&nbsp
+        		SPHEROID["WGS_84",6378137,298.257223563]], <br>&nbsp
+    		PRIMEM["Greenwich",0], <br>&nbsp
+    		UNIT["Degree",0.017453292519943295]]</p>
+		<h2>tgr2006se_bern_lka.shp Preview</h2>
+		<img src="final/tgr2006.png" alt="tgr2006 Shapefile"><br><br>
+		
+		<h1><font color="red">Geoserver Hosted Layers in QGIS</font></h1>
+		<h2>35106-A5_CONT.shp</h2>
+		<img src="final/a5_qgis.png" alt="A5 Shapefile"><br><br>
+		<h2>35106-A6_CONT.shp</h2>
+		<img src="final/a6_qgis.png" alt="A6 Shapefile"><br><br>
+		<h2>tgr2006se_bern_lka.shp</h2>
+		<img src="final/tgr_qgis.png" alt="tgr2006 Shapefile"><br><br>
+		
+		
+		<p><a href="index.html">Go Back Home</a></p>
+		
+		<div id="map"></div>
+	
+	</body>
+	
+</html>
